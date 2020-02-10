@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>python上generator 的一些疑惑 | Misaka-Mikodo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Python的Generator　　教程及题目链接　　关于yield的博客　　目前遇到的一个问题是关于生成器yield的一些疑惑，即教程里那一道杨辉三角 一开始的理解　　　　一开始我认为python的yield是类似压栈存储数据的作用(运行流程类似断点)，具体原理可以参考上面的博客，即yield相当于一次调用的终点，然后下一次是从上面yield的地方继续下去的。　　但是数据上的存储不是简单的数据压">
+  <meta name="description" content="Python的Generator　　教程及题目链接　　关于yield的博客　　目前遇到的一个问题是关于生成器yield的一些疑惑，即教程里那一道杨辉三角">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python上generator 的一些疑惑">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;10&#x2F;python%E4%B8%8Agenerator-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91&#x2F;index.html">
 <meta property="og:site_name" content="Misaka-Mikodo">
-<meta property="og:description" content="Python的Generator　　教程及题目链接　　关于yield的博客　　目前遇到的一个问题是关于生成器yield的一些疑惑，即教程里那一道杨辉三角 一开始的理解　　　　一开始我认为python的yield是类似压栈存储数据的作用(运行流程类似断点)，具体原理可以参考上面的博客，即yield相当于一次调用的终点，然后下一次是从上面yield的地方继续下去的。　　但是数据上的存储不是简单的数据压">
+<meta property="og:description" content="Python的Generator　　教程及题目链接　　关于yield的博客　　目前遇到的一个问题是关于生成器yield的一些疑惑，即教程里那一道杨辉三角">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-10T12:36:39.979Z">
+<meta property="og:updated_time" content="2020-02-10T12:56:52.745Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Misaka-Mikodo" type="application/atom+xml">
@@ -173,6 +173,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Python的Generator"><a href="#Python的Generator" class="headerlink" title="Python的Generator"></a>Python的Generator</h2><p>　　<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017318207388128" target="_blank" rel="noopener">教程及题目链接</a><br>　　<a href="https://blog.csdn.net/mieleizhi0522/article/details/82142856" target="_blank" rel="noopener">关于yield的博客</a><br>　　目前遇到的一个问题是关于生成器yield的一些疑惑，即教程里那一道杨辉三角</p>
+<a id="more"></a>
+
 <h2 id="一开始的理解"><a href="#一开始的理解" class="headerlink" title="一开始的理解"></a>一开始的理解</h2><p>　　<br>　　一开始我认为python的yield是类似压栈存储数据的作用(运行流程类似断点)，具体原理可以参考上面的博客，即yield相当于一次调用的终点，然后下一次是从上面yield的地方继续下去的。<br>　　但是数据上的存储不是简单的数据压栈，因为yield存进去的不是数据而是地址，可以看一下下面这个代码的运行结果。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">triangles</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    L = [<span class="number">1</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">yield</span> L</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        L += [<span class="number">0</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">n = <span class="number">0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">results = []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> triangles():</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    results.append(t)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    n = n + <span class="number">1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> n == <span class="number">5</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">print(results)</span></pre></td></tr></table></figure>
 
