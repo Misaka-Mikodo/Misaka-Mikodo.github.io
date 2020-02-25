@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>学校管理系统 | Misaka-Mikodo</title>
+  <title>用多张照片拼接成一个照片 | Misaka-Mikodo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一天进度大概花了一天的时间学习wxss和wxml的语法，就勉强上来写项目了，由于之前有过一些学习的经验吧，所以上手还是挺快的，跳过了组件的介绍，打算之后有遇到再学习。目前第一天的进度是在创建了一个主页面其它页面的功能尚未设计，本来计划两天解决，看来是想太多了计划后面的话是一天实现一个页面的功能">
+  <meta name="description" content="简介　　朋友的生日快到啦，每年都会想一些奇奇怪怪的东西作为礼物&#x3D; &#x3D;，机缘巧合下，在b站看到了用多个图片拼接一个大照片思路 -&amp;gt;传送门，这个up用的是一个软件，但是感觉自己也可以用opencv来实现&#x3D; &#x3D;，于是便写了这么一个程序……　　想想用朋友的偶像照片拼出朋友的自拍感觉会被打XD　　源码之后粘贴">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学校管理系统">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;24&#x2F;%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F&#x2F;index.html">
+<meta property="og:title" content="用多张照片拼接成一个照片">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;index.html">
 <meta property="og:site_name" content="Misaka-Mikodo">
-<meta property="og:description" content="第一天进度大概花了一天的时间学习wxss和wxml的语法，就勉强上来写项目了，由于之前有过一些学习的经验吧，所以上手还是挺快的，跳过了组件的介绍，打算之后有遇到再学习。目前第一天的进度是在创建了一个主页面其它页面的功能尚未设计，本来计划两天解决，看来是想太多了计划后面的话是一天实现一个页面的功能">
+<meta property="og:description" content="简介　　朋友的生日快到啦，每年都会想一些奇奇怪怪的东西作为礼物&#x3D; &#x3D;，机缘巧合下，在b站看到了用多个图片拼接一个大照片思路 -&amp;gt;传送门，这个up用的是一个软件，但是感觉自己也可以用opencv来实现&#x3D; &#x3D;，于是便写了这么一个程序……　　想想用朋友的偶像照片拼出朋友的自拍感觉会被打XD　　源码之后粘贴">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;24&#x2F;%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F&#x2F;main-page.jpg">
-<meta property="og:updated_time" content="2020-02-25T01:29:22.576Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;file.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;finish.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;tiger.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;bug.jpg">
+<meta property="og:updated_time" content="2020-02-25T17:05:40.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;24&#x2F;%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F&#x2F;main-page.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;file.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Misaka-Mikodo" type="application/atom+xml">
   
@@ -154,31 +157,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-学校管理系统" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-用多张照片拼接成一个照片" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      学校管理系统
+      用多张照片拼接成一个照片
     </h1>
   
 
         
-        <a href="/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2020-02-24T15:28:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-24</time>
+        <a href="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/" class="archive-article-date">
+  	<time datetime="2020-02-25T16:12:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h1><h2 id="进度"><a href="#进度" class="headerlink" title="进度"></a>进度</h2><p>大概花了一天的时间学习wxss和wxml的语法，就勉强上来写项目了，由于之前有过一些学习的经验吧，所以上手还是挺快的，跳过了组件的介绍，打算之后有遇到再学习。目前第一天的进度是在创建了一个主页面<br><img src="/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/main-page.jpg" alt="主页面"><br>其它页面的功能尚未设计，本来计划两天解决，看来是想太多了<br>计划后面的话是一天实现一个页面的功能  </p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>　　朋友的生日快到啦，每年都会想一些奇奇怪怪的东西作为礼物= =，机缘巧合下，在b站看到了用多个图片拼接一个大照片思路 -&gt;<a href="https://www.bilibili.com/video/av90485405" target="_blank" rel="noopener">传送门</a>，这个up用的是一个软件，但是感觉自己也可以用opencv来实现= =，于是便写了这么一个程序……<br>　　想想用朋友的偶像照片拼出朋友的自拍感觉会被打XD<br>　　<a href>源码之后粘贴</a>  </p>
 <a id="more"></a>
 
-<h2 id="遇到的一些问题"><a href="#遇到的一些问题" class="headerlink" title="遇到的一些问题"></a>遇到的一些问题</h2><h3 id="git的使用尚不明确"><a href="#git的使用尚不明确" class="headerlink" title="git的使用尚不明确"></a>git的使用尚不明确</h3><p>这边做项目打算用git记录每次项目的进度，并且每天git push到github上，但是目前熟悉的只是基础的add、merge、commit等功能，一旦遇到冲突的话就没办法解决了，虽然教程有说方法，但是打算等遇到了再去看教程</p>
-<h3 id="icon的寻找"><a href="#icon的寻找" class="headerlink" title="icon的寻找"></a>icon的寻找</h3><p>推荐一个好的网站<a href="https://www.iconfont.cn/?spm=a313x.7781069.1998910419.d4d0a486a" target="_blank" rel="noopener">阿里巴巴的icon</a>，这里有很多的icon使用  </p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="获取图片"><a href="#获取图片" class="headerlink" title="获取图片"></a>获取图片</h2><p>　　主要要获取的图片是需要拼接的大图片和被拼接的小图片。我这边打算用朋友的自拍，小图片的获取比较难，小图片越多颜色会更加贴近，我使用的是200张偶像照片作为资源库。一个个从网上下载下来自然很慢，所以需要爬虫爬取一些照片，不会爬取只能求助一下万能的CSDN^^<br>　　-&gt;博客的<a href="https://blog.csdn.net/qq_40774175/article/details/81273198" target="_blank" rel="noopener">传送门</a><br>　　PS：注意在name.txt里填写你要爬取的照片的关键字<br>　　爬取结果如图所示<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/file.jpg" alt="爬取结果"></p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>　　简单的思路就是每一张照片都有大致的色调，我把每个照片从几万像素点resize到几百的像素点，计算平均的RBG值，记录在vector里面。其次对大图进行分块，也是找到块中平均的RGB值，填入最接近的找到最接近的RGB值的小图。<br>　　这边有个注意点，如果想做一个高清的拼接图，必须在resize之前就把小图存起来，否则resize后的小图就是像素点……建议调试时用resize之后的小图，等到调试成功的时候再存入原图进行拼接，否则会浪费很多时间在拼接小图上。<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/finish.jpg" alt="结果"><br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/tiger.jpg" alt="比较"> </p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>　　基本上没有什么大问题，小问题像是获取像素点的时候把x和y值搞反了，如果在获取像素点的时候发生了段错误基本上是因为这边–。<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/bug.jpg" alt="翻车"> </p>
 
       
 
@@ -258,7 +262,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -272,18 +276,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          用多张照片拼接成一个照片
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/02/10/python%E4%B8%8Agenerator-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python上generator 的一些疑惑</div>
+    <a href="/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学校管理系统</div>
       <i class="icon-circle-right"></i>
     </a>
   
