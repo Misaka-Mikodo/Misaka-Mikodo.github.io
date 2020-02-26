@@ -19,7 +19,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;finish.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;tiger.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;bug.jpg">
-<meta property="og:updated_time" content="2020-02-25T17:05:40.207Z">
+<meta property="og:updated_time" content="2020-02-26T01:57:58.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87&#x2F;file.jpg">
   
@@ -182,7 +182,9 @@
 
 <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="获取图片"><a href="#获取图片" class="headerlink" title="获取图片"></a>获取图片</h2><p>　　主要要获取的图片是需要拼接的大图片和被拼接的小图片。我这边打算用朋友的自拍，小图片的获取比较难，小图片越多颜色会更加贴近，我使用的是200张偶像照片作为资源库。一个个从网上下载下来自然很慢，所以需要爬虫爬取一些照片，不会爬取只能求助一下万能的CSDN^^<br>　　-&gt;博客的<a href="https://blog.csdn.net/qq_40774175/article/details/81273198" target="_blank" rel="noopener">传送门</a><br>　　PS：注意在name.txt里填写你要爬取的照片的关键字<br>　　爬取结果如图所示<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/file.jpg" alt="爬取结果"></p>
 <h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>　　简单的思路就是每一张照片都有大致的色调，我把每个照片从几万像素点resize到几百的像素点，计算平均的RBG值，记录在vector里面。其次对大图进行分块，也是找到块中平均的RGB值，填入最接近的找到最接近的RGB值的小图。<br>　　这边有个注意点，如果想做一个高清的拼接图，必须在resize之前就把小图存起来，否则resize后的小图就是像素点……建议调试时用resize之后的小图，等到调试成功的时候再存入原图进行拼接，否则会浪费很多时间在拼接小图上。<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/finish.jpg" alt="结果"><br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/tiger.jpg" alt="比较"> </p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>　　基本上没有什么大问题，小问题像是获取像素点的时候把x和y值搞反了，如果在获取像素点的时候发生了段错误基本上是因为这边–。<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/bug.jpg" alt="翻车"> </p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>　　基本上没有什么大问题，小问题像是获取像素点的时候把x和y值搞反了，如果在获取像素点的时候发生了段错误基本上是因为这边–。<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/bug.jpg" alt="翻车">  </p>
+<h1 id="改进的思路"><a href="#改进的思路" class="headerlink" title="改进的思路"></a>改进的思路</h1><h2 id="关于颜色单一的问题"><a href="#关于颜色单一的问题" class="headerlink" title="关于颜色单一的问题"></a>关于颜色单一的问题</h2><p>　　如果资源库的图片不够多，且大图颜色较为单一时，图像在拼接的时候很容易就出现同一张图片多次出现的情况，这样就不能很好的把所有图片利用起来，这里我想到在每一个小图设置一个优先级priority，使用过一次之后降低它的优先级，允许其他张图片来补充这一块像素，当然为了防止颜色差异过大，仍然需要在一定的误差内。<br>　　例如A图和B图和C图，优先级相同都为0，误差计算公式为 $目前最小误差±优先级$ 某一块的RGB均值与三张图的RGB差分别为1，2，4，那么首先找到差值最小的A图，优先级减低为1，其次再寻找的时候再遍历一次三个图，发现B图是优先级最高，且满足误差范围[0,2],故选择B图。<br>　　第三次寻找误差范围是[0,3],此时没有高优先级的图满足，所以在优先级为1的图中找误差最小的A图，A图优先级变成2，误差范围[0,4],此时C图满足误差范围且优先级最高，故选择C图，这么选择的话既能保证用上了尽量多的图片，又能保证颜色误差不会过大。  </p>
+<h2 id="关于识别图像"><a href="#关于识别图像" class="headerlink" title="关于识别图像"></a>关于识别图像</h2><p>　　在找图片对应的时候，用RGB均值差找到相近图像只是一个比较粗略的办法，需要切割到足够小块才能保证和大图相近，但是在现实情况下这么处理很花时间，如果能通过图像识别的方法来处理的话能大大加快对应和拼接的进度，相关知识在下方的博客有介绍：<br>　　<a href="http://www.ruanyifeng.com/blog/2011/07/principle_of_similar_image_search.html" target="_blank" rel="noopener">相似图片搜索的原理</a></p>
 
       
 
