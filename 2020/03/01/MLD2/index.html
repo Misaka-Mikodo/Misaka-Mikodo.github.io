@@ -6,16 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Misaka-Mikodo</title>
+  <title>机器学习-Day_2&amp;Day_3 | Misaka-Mikodo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="My Secret Base">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Misaka-Mikodo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="吴恩达机器学习笔记D2&amp;amp;D3">
+<meta name="keywords" content="&#x2F;machineLearning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习-Day_2&amp;Day_3">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;index.html">
 <meta property="og:site_name" content="Misaka-Mikodo">
-<meta property="og:description" content="My Secret Base">
+<meta property="og:description" content="吴恩达机器学习笔记D2&amp;amp;D3">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;3-6_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;4-1_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;4-2_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;4-3_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;4-4_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;4-4_P2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;4-6_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;4-6_P2.png">
+<meta property="og:updated_time" content="2020-03-02T14:18:18.673Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;MLD2&#x2F;3-6_P1.png">
   
     <link rel="alternative" href="/atom.xml" title="Misaka-Mikodo" type="application/atom+xml">
   
@@ -151,16 +162,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-MLD2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-MLD2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/01/MLD2/">机器学习-Day_2&amp;Day_3</a>
+    <h1 class="article-title" itemprop="name">
+      机器学习-Day_2&amp;Day_3
     </h1>
   
 
@@ -174,11 +183,49 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>吴恩达机器学习笔记D2&amp;D3</p>
-        
-          <a class="article-more-a" href="/2020/03/01/MLD2/#more">more >></a>
-        
+<a id="more"></a>
+<h2 id="3-1矩阵与向量"><a href="#3-1矩阵与向量" class="headerlink" title="3.1矩阵与向量"></a>3.1矩阵与向量</h2><p>　　　Matrix: Rectangular array of numbers.<br>　　　Dimension of matrix: number of rows times number of cols.<br>　　　$A_{ij}$ = “i,j entry” in the $i^{th}$ row, $j^{th}$ col.<br>　　　Vector: An n*1 matrix(在线代里还有细分行向量和列向量)<br>　　　$y_i = i^th element$</p>
+<h2 id="3-2加法和标量乘法"><a href="#3-2加法和标量乘法" class="headerlink" title="3.2加法和标量乘法"></a>3.2加法和标量乘法</h2><h3 id="矩阵加法"><a href="#矩阵加法" class="headerlink" title="矩阵加法"></a>矩阵加法</h3><p>$$<br>\begin{bmatrix}<br>1&amp;0\\\<br>2&amp;5\\\<br>3&amp;1<br>\end{bmatrix}+<br>\begin{bmatrix}<br>4&amp;0.5\\\<br>2&amp;5\\\<br>0&amp;1<br>\end{bmatrix}=<br>\begin{bmatrix}<br>5&amp;0.5\\\<br>4&amp;10\\\<br>3&amp;2<br>\end{bmatrix}<br>$$  </p>
+<h3 id="标量乘法"><a href="#标量乘法" class="headerlink" title="标量乘法"></a>标量乘法</h3><p>$$<br>3 \ast<br>\begin{bmatrix}<br>1&amp;0\\\<br>2&amp;5\\\<br>3&amp;1<br>\end{bmatrix}=<br>\begin{bmatrix}<br>3&amp;0\\\<br>6&amp;15\\\<br>9&amp;3<br>\end{bmatrix}<br>$$</p>
+<h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><p>　　　<img src="/2020/03/01/MLD2/3-6_P1.png" alt="pic"><br>　　　和列方程组差不多，左边是输入，经过第二个矩阵的变换（假设函数）输出结果。</p>
+<h3 id="3-5矩阵乘法的特征"><a href="#3-5矩阵乘法的特征" class="headerlink" title="3.5矩阵乘法的特征"></a>3.5矩阵乘法的特征</h3><h3 id="3-6逆和转置"><a href="#3-6逆和转置" class="headerlink" title="3.6逆和转置"></a>3.6逆和转置</h3><h2 id="4-1多元线性回归的多特征"><a href="#4-1多元线性回归的多特征" class="headerlink" title="4.1多元线性回归的多特征"></a>4.1多元线性回归的多特征</h2><p>　　　<img src="/2020/03/01/MLD2/4-1_P1.png" alt="pic"><br>　　　n是特征的数量<br>　　　$x^{\left(i\right)}$表示第i个样本<br>　　　$x^{\left(i\right)}_j$表示第i个样本中第j个特征的值</p>
+<h3 id="Hypothesis"><a href="#Hypothesis" class="headerlink" title="Hypothesis"></a>Hypothesis</h3><p>　　　过去是单变量的线性回归，随着特征量的增加，需要对假设函数修改<br>　　　$$h_{\theta}\left(x\right) = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3$$<br>　　　这里的x0的取值默认取1，之所以这么取是可能是为了向量的纬度对齐。<br>　　　于是便可以写成如下形式<br>$$<br>x =<br>\begin{bmatrix}<br>x_0\\\<br>x_1\\\<br>x_2\\\<br>\vdots \\\<br>x_n<br>\end{bmatrix}<br><br>\theta =<br>\begin{bmatrix}<br>\theta_0\\\<br>\theta_1\\\<br>\theta_2\\\<br>\vdots\\\<br>\theta_n<br>\end{bmatrix}<br>$$<br>$$ h_{\theta}\left(x\right) = \theta^Tx$$<br>　　　这里要注意内外积的区别，因为结果是一个标量而不是一个矩阵，所以是前面的theta转置。</p>
+<h2 id="4-2多元梯度下降法"><a href="#4-2多元梯度下降法" class="headerlink" title="4.2多元梯度下降法"></a>4.2多元梯度下降法</h2><p>　　　假设函数: $h_{\theta}\left(x\right) = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3$<br>　　　参数: $\theta_0,\theta_1,\cdots,\theta_n$<br>　　　代价函数:<br>$$J\left(\theta_0,\theta_1,\cdots,\theta_n\right)=\frac {1}{2m} \sum_{i=1}^m {\left( h_θ \left( x^{i} \right) -y \right)} ^2$$<br>　　　梯度下降<br>　　　$θ_j := θ_0 - α\frac{∂}{∂θ_j}J\left(\theta_0,\theta_1,\cdots,\theta_n\right)$<br>　　　<img src="/2020/03/01/MLD2/4-2_P1.png" alt="pic"><br>　　　常数项1声明为了$x_0$，所以$\theta_0$的情况也包含了进去。</p>
+<h2 id="4-3特征缩放"><a href="#4-3特征缩放" class="headerlink" title="4.3特征缩放"></a>4.3特征缩放</h2><h3 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h3><p>　　　特征缩放Feature Scaling: make sure feature are on a similar scale.<br>　　　<img src="/2020/03/01/MLD2/4-3_P1.png" alt="pic"><br>　　　由于卧室数量和房子面积比例为400:1, 所以会导致在画代价函数图像的时候画出的椭圆太扁平。为了方便收敛，采取右边的对特征量进行缩放的方法。<br>　　　看弹幕提到一个问题，这个椭圆是竖着还是躺着，原图这么画是没错的，因为x1的范围相对于x2较大，所以导致$\theta_1$稍微变化一点，代价函数的值就会有更大的变化，这就是为什么在$\theta_1$轴上，等高线如此密集的原因。<br>　　　方法：尽量让所有的特征大致收缩在[-1,1]的范围之间，当然像[0,2]这样相对较小的也可以。</p>
+<h3 id="均值归一化"><a href="#均值归一化" class="headerlink" title="均值归一化"></a>均值归一化</h3><p>　　　均值归一化Mean normalization: Replace $x_i with x_i-/mu_i to make features have approximately zero mean$.(Don`t apply to $x_0$ = 1)<br>　　　上面这些是为了把特征值$x_i = \frac{x_i-\mu_i}{S_i}$<br>　　　$\mu_i$表示平均值，而$S_i$可以用样本集的方差或者极差(最大值减最小值)。<br>　　　以上的特征缩放是为了减少迭代次数，加快梯度下降的速度。</p>
+<h2 id="4-4学习率"><a href="#4-4学习率" class="headerlink" title="4.4学习率"></a>4.4学习率</h2><p>　　　两个目标:<br>　　　1.”Debugging”: 如何保证梯度下降正常工作<br>　　　2.如何选择学习率α</p>
+<h3 id="判断梯度下降正常工作"><a href="#判断梯度下降正常工作" class="headerlink" title="判断梯度下降正常工作"></a>判断梯度下降正常工作</h3><p>　　　<img src="/2020/03/01/MLD2/4-4_P1.png" alt="pic"><br>　　　画出最小代价函数值随着迭代次数变化的曲线图。随着迭代次数的上升代价函数逐渐收敛到一个最小值。</p>
+<h3 id="自动收敛测试"><a href="#自动收敛测试" class="headerlink" title="自动收敛测试"></a>自动收敛测试</h3><p>　　　automatic convergence test自动收敛测试: 如果在一次迭代中，J(θ)小于某个很小的数(如1e-3)，则视为函数已收敛。<br>　　　但是这个阈值时很难确定的，所以从上面的曲线图判断是否收敛比较好。</p>
+<h3 id="代价函数不随着迭代次数下降的异常情况"><a href="#代价函数不随着迭代次数下降的异常情况" class="headerlink" title="代价函数不随着迭代次数下降的异常情况"></a>代价函数不随着迭代次数下降的异常情况</h3><p>　　　<img src="/2020/03/01/MLD2/4-4_P2.png" alt="pic"><br>　　　1. 选取适合的学习率，代价函数会随着迭代次数上升下降<br>　　　2. 如果学习率过低，导致迭代次数过多<br>　　　3. 如果学习率过高，代价函数可能不会在迭代中减少或收敛。</p>
+<h2 id="4-5特征和多项式回归"><a href="#4-5特征和多项式回归" class="headerlink" title="4.5特征和多项式回归"></a>4.5特征和多项式回归</h2><p>　　　1. 特征量的选取要选取真正影响假设函数的特征。<br>　　　2. 多项式的选取也要根据数据的分布选取。（如二次函数随着x增加会先升后降，三次函数则会x增加升降升）</p>
+<h2 id="4-6正规方程（区别于迭代方法的直接解法）"><a href="#4-6正规方程（区别于迭代方法的直接解法）" class="headerlink" title="4.6正规方程（区别于迭代方法的直接解法）"></a>4.6正规方程（区别于迭代方法的直接解法）</h2><p>　　　<img src="/2020/03/01/MLD2/4-6_P1.png" alt="pic"><br>　　　一个方法是，对每一个θ进行求偏导数，并将导数置零（即求出能够让代价函数最小的时候θ的取值）。</p>
+<p>　　　另一个正规方程， 即列出矩阵方程求出参数，具体过程如下<br>　　　<img src="/2020/03/01/MLD2/4-6_P2.png" alt="pic"><br>　　　(这边就是如同Ax=y这种矩阵方程的求解)<br>　　　如果使用特征方程的话则不需要进行特征缩放。</p>
+<h3 id="梯度下降-即迭代方法-和正规方程的比较"><a href="#梯度下降-即迭代方法-和正规方程的比较" class="headerlink" title="梯度下降(即迭代方法)和正规方程的比较"></a>梯度下降(即迭代方法)和正规方程的比较</h3><p>$$<br>\begin{array}{l|l}<br>{Gradient　Descent}&amp;{Birnak　Equation}\\<br>\hline<br>{Need　to　choose　\alpha}&amp;{No　need　to　choose　\alpha}\\<br>{Need　many　iterations}&amp;{Don’t　need　to　iterate}\\<br>{Works　well　even　when　n　is　large}&amp;{Need　to　compute　\left(X^TX\right)^{-1}　and　slow　if　n　is　large　O\left(n^3\right)}\\<br>\end{array}<br>$$</p>
+<h2 id="4-7正规方程在矩阵不可逆情况下的解决方法"><a href="#4-7正规方程在矩阵不可逆情况下的解决方法" class="headerlink" title="4.7正规方程在矩阵不可逆情况下的解决方法"></a>4.7正规方程在矩阵不可逆情况下的解决方法</h2><p>　　　Otacle中的Pinv：Pseudo-inverse伪逆（我也没听说过）<br>　　　不可逆non-invertible有两种情况:<br>　　　1. 线性相关的特征(重复的特征)<br>　　　　　　-删除重复的特征<br>　　　2. 特征量过多，导致样本数少于特征数量。<br>　　　　　　-删除一些影响小的特征，或则使用正规化regularization。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -198,16 +245,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/01/MLD2/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/01/MLD2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/01/%E5%8D%9A%E5%AE%A2%E4%B8%8B%E5%88%92%E7%BA%BF%E6%95%B0%E5%AD%A6%E6%B8%B2%E6%9F%93%E6%88%90%E6%96%9C%E4%BD%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">博客下划线数学渲染成斜体</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -227,618 +333,14 @@
 
 
 
-
   
-    <article id="post-博客下划线数学渲染成斜体" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/01/%E5%8D%9A%E5%AE%A2%E4%B8%8B%E5%88%92%E7%BA%BF%E6%95%B0%E5%AD%A6%E6%B8%B2%E6%9F%93%E6%88%90%E6%96%9C%E4%BD%93/">博客下划线数学渲染成斜体</a>
-    </h1>
   
 
-        
-        <a href="/2020/03/01/%E5%8D%9A%E5%AE%A2%E4%B8%8B%E5%88%92%E7%BA%BF%E6%95%B0%E5%AD%A6%E6%B8%B2%E6%9F%93%E6%88%90%E6%96%9C%E4%BD%93/" class="archive-article-date">
-  	<time datetime="2020-03-01T04:10:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天回看上次的笔记，发现数学渲染的一塌糊涂……<br>在博客找到解决方法<br><a href="https://segmentfault.com/a/1190000007261752" target="_blank" rel="noopener">Hexo下mathjax的转义问题</a><br>博客中提到两个，一个是更换markdown的渲染引擎，一个是更换mathhax的渲染引擎，另一个是更改渲染规则，我用的是第三个，路径在/nodes_modules/marked/lib/marked.js<br>ps: 我这边是在var inline的代码块里的，可能修改前内容和博客里的不一样，但是修改后的内容填进去后在博客里确实渲染成功了。<br><a href="https://www.jianshu.com/p/8b6fc36035c0" target="_blank" rel="noopener">Markdown-常用数学公式编辑命令</a><br>pps: 查的另一个博客的公式渲染都挂了，这么博主是什么神仙……  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/01/%E5%8D%9A%E5%AE%A2%E4%B8%8B%E5%88%92%E7%BA%BF%E6%95%B0%E5%AD%A6%E6%B8%B2%E6%9F%93%E6%88%90%E6%96%9C%E4%BD%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-machine-learning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/29/machine-learning/">机器学习-Day_1</a>
-    </h1>
   
 
-        
-        <a href="/2020/02/29/machine-learning/" class="archive-article-date">
-  	<time datetime="2020-02-29T06:25:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.bilibili.com/video/av50747658?from=search&seid=16348381955975479986" target="_blank" rel="noopener">视频链接</a>  </p>
-<p>关于吴恩达机器学习的笔记</p>
-        
-          <a class="article-more-a" href="/2020/02/29/machine-learning/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">/machineLearning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/29/machine-learning/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-用多张照片拼接成一个照片" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/">用多张照片拼接成一个照片</a>
-    </h1>
   
 
-        
-        <a href="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/" class="archive-article-date">
-  	<time datetime="2020-02-25T16:12:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>　　朋友的生日快到啦，每年都会想一些奇奇怪怪的东西作为礼物= =，机缘巧合下，在b站看到了用多个图片拼接一个大照片思路 -&gt;<a href="https://www.bilibili.com/video/av90485405" target="_blank" rel="noopener">传送门</a>，这个up用的是一个软件，但是感觉自己也可以用opencv来实现= =，于是便写了这么一个程序……<br>　　想想用朋友的偶像照片拼出朋友的自拍感觉会被打XD<br>　　<a href="https://github.com/Misaka-Mikodo/splice_picture" target="_blank" rel="noopener">源码</a>  </p>
-        
-          <a class="article-more-a" href="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-学校管理系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">学校管理系统</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2020-02-24T15:28:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h1><h2 id="进度"><a href="#进度" class="headerlink" title="进度"></a>进度</h2><p>大概花了一天的时间学习wxss和wxml的语法，就勉强上来写项目了，由于之前有过一些学习的经验吧，所以上手还是挺快的，跳过了组件的介绍，打算之后有遇到再学习。目前第一天的进度是在创建了一个主页面<br><img src="/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/main-page.jpg" alt="主页面"><br>其它页面的功能尚未设计，本来计划两天解决，看来是想太多了<br>计划后面的话是一天实现一个页面的功能  </p>
-        
-          <a class="article-more-a" href="/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python上generator-的一些疑惑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/python%E4%B8%8Agenerator-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/">python上generator 的一些疑惑</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/10/python%E4%B8%8Agenerator-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/" class="archive-article-date">
-  	<time datetime="2020-02-10T12:04:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python的Generator"><a href="#Python的Generator" class="headerlink" title="Python的Generator"></a>Python的Generator</h2><p>　　<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017318207388128" target="_blank" rel="noopener">教程及题目链接</a><br>　　<a href="https://blog.csdn.net/mieleizhi0522/article/details/82142856" target="_blank" rel="noopener">关于yield的博客</a><br>　　目前遇到的一个问题是关于生成器yield的一些疑惑，即教程里那一道杨辉三角</p>
-        
-          <a class="article-more-a" href="/2020/02/10/python%E4%B8%8Agenerator-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/10/python%E4%B8%8Agenerator-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-初探githubDesktop的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/15/%E5%88%9D%E6%8E%A2githubDesktop%E7%9A%84%E4%BD%BF%E7%94%A8/">初探githubDesktop的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/15/%E5%88%9D%E6%8E%A2githubDesktop%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-01-15T09:10:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/15/%E5%88%9D%E6%8E%A2githubDesktop%E7%9A%84%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-opencv-draw" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/07/opencv-draw/">opencv_draw</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/07/opencv-draw/" class="archive-article-date">
-  	<time datetime="2019-12-07T04:31:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/07/opencv-draw/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo-install" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/06/Hexo-install/">Hexo的第一次安装</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/06/Hexo-install/" class="archive-article-date">
-  	<time datetime="2019-12-06T08:56:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="选择Hexo的原因"><a href="#选择Hexo的原因" class="headerlink" title="选择Hexo的原因"></a>选择Hexo的原因</h2><p>　　当时单纯是因为一个喜欢的up主<a href="https://space.bilibili.com/384068749?from=search&seid=2197445177359928357" target="_blank" rel="noopener" codesheep的b站空间"">codesheep</a>的一个更新,up讲的挺仔细的，我第一次装+配环境（除了git，我之前就装过了），大概花了我1小时的时间，总之还是挺高效的。<br>　　当然，如果你是第一次想要装博客，选择还是挺多的，像我的同学就是采用了JeKyll去搭建的。-&gt;<a href="https://wu-kan.github.io/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%9F%BA%E4%BA%8EJekyll%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2" target="_blank" rel="noopener">传送门</a>，不同的框架有不同的优点吧，这边我记录一下在windows10环境下安装hexo的过程。</p>
-        
-          <a class="article-more-a" href="/2019/12/06/Hexo-install/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/06/Hexo-install/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/06/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/06/hello-world/" class="archive-article-date">
-  	<time datetime="2019-12-06T08:53:18.608Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/06/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -861,8 +363,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

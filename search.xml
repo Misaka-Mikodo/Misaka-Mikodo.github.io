@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>机器学习-Day_2&amp;Day_3</title>
+    <url>/2020/03/01/MLD2/</url>
+    <content><![CDATA[<p>吴恩达机器学习笔记D2&amp;D3</p>
+<a id="more"></a>
+<h2 id="3-1矩阵与向量"><a href="#3-1矩阵与向量" class="headerlink" title="3.1矩阵与向量"></a>3.1矩阵与向量</h2><p>　　　Matrix: Rectangular array of numbers.<br>　　　Dimension of matrix: number of rows times number of cols.<br>　　　$A_{ij}$ = “i,j entry” in the $i^{th}$ row, $j^{th}$ col.<br>　　　Vector: An n*1 matrix(在线代里还有细分行向量和列向量)<br>　　　$y_i = i^th element$</p>
+<h2 id="3-2加法和标量乘法"><a href="#3-2加法和标量乘法" class="headerlink" title="3.2加法和标量乘法"></a>3.2加法和标量乘法</h2><h3 id="矩阵加法"><a href="#矩阵加法" class="headerlink" title="矩阵加法"></a>矩阵加法</h3><p>$$<br>\begin{bmatrix}<br>1&amp;0\\\<br>2&amp;5\\\<br>3&amp;1<br>\end{bmatrix}+<br>\begin{bmatrix}<br>4&amp;0.5\\\<br>2&amp;5\\\<br>0&amp;1<br>\end{bmatrix}=<br>\begin{bmatrix}<br>5&amp;0.5\\\<br>4&amp;10\\\<br>3&amp;2<br>\end{bmatrix}<br>$$  </p>
+<h3 id="标量乘法"><a href="#标量乘法" class="headerlink" title="标量乘法"></a>标量乘法</h3><p>$$<br>3 \ast<br>\begin{bmatrix}<br>1&amp;0\\\<br>2&amp;5\\\<br>3&amp;1<br>\end{bmatrix}=<br>\begin{bmatrix}<br>3&amp;0\\\<br>6&amp;15\\\<br>9&amp;3<br>\end{bmatrix}<br>$$</p>
+<h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><p>　　　<img src="/2020/03/01/MLD2/3-6_P1.png" alt="pic"><br>　　　和列方程组差不多，左边是输入，经过第二个矩阵的变换（假设函数）输出结果。</p>
+<h3 id="3-5矩阵乘法的特征"><a href="#3-5矩阵乘法的特征" class="headerlink" title="3.5矩阵乘法的特征"></a>3.5矩阵乘法的特征</h3><h3 id="3-6逆和转置"><a href="#3-6逆和转置" class="headerlink" title="3.6逆和转置"></a>3.6逆和转置</h3><h2 id="4-1多元线性回归的多特征"><a href="#4-1多元线性回归的多特征" class="headerlink" title="4.1多元线性回归的多特征"></a>4.1多元线性回归的多特征</h2><p>　　　<img src="/2020/03/01/MLD2/4-1_P1.png" alt="pic"><br>　　　n是特征的数量<br>　　　$x^{\left(i\right)}$表示第i个样本<br>　　　$x^{\left(i\right)}_j$表示第i个样本中第j个特征的值</p>
+<h3 id="Hypothesis"><a href="#Hypothesis" class="headerlink" title="Hypothesis"></a>Hypothesis</h3><p>　　　过去是单变量的线性回归，随着特征量的增加，需要对假设函数修改<br>　　　$$h_{\theta}\left(x\right) = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3$$<br>　　　这里的x0的取值默认取1，之所以这么取是可能是为了向量的纬度对齐。<br>　　　于是便可以写成如下形式<br>$$<br>x =<br>\begin{bmatrix}<br>x_0\\\<br>x_1\\\<br>x_2\\\<br>\vdots \\\<br>x_n<br>\end{bmatrix}<br><br>\theta =<br>\begin{bmatrix}<br>\theta_0\\\<br>\theta_1\\\<br>\theta_2\\\<br>\vdots\\\<br>\theta_n<br>\end{bmatrix}<br>$$<br>$$ h_{\theta}\left(x\right) = \theta^Tx$$<br>　　　这里要注意内外积的区别，因为结果是一个标量而不是一个矩阵，所以是前面的theta转置。</p>
+<h2 id="4-2多元梯度下降法"><a href="#4-2多元梯度下降法" class="headerlink" title="4.2多元梯度下降法"></a>4.2多元梯度下降法</h2><p>　　　假设函数: $h_{\theta}\left(x\right) = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3$<br>　　　参数: $\theta_0,\theta_1,\cdots,\theta_n$<br>　　　代价函数:<br>$$J\left(\theta_0,\theta_1,\cdots,\theta_n\right)=\frac {1}{2m} \sum_{i=1}^m {\left( h_θ \left( x^{i} \right) -y \right)} ^2$$<br>　　　梯度下降<br>　　　$θ_j := θ_0 - α\frac{∂}{∂θ_j}J\left(\theta_0,\theta_1,\cdots,\theta_n\right)$<br>　　　<img src="/2020/03/01/MLD2/4-2_P1.png" alt="pic"><br>　　　常数项1声明为了$x_0$，所以$\theta_0$的情况也包含了进去。</p>
+<h2 id="4-3特征缩放"><a href="#4-3特征缩放" class="headerlink" title="4.3特征缩放"></a>4.3特征缩放</h2><h3 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h3><p>　　　特征缩放Feature Scaling: make sure feature are on a similar scale.<br>　　　<img src="/2020/03/01/MLD2/4-3_P1.png" alt="pic"><br>　　　由于卧室数量和房子面积比例为400:1, 所以会导致在画代价函数图像的时候画出的椭圆太扁平。为了方便收敛，采取右边的对特征量进行缩放的方法。<br>　　　看弹幕提到一个问题，这个椭圆是竖着还是躺着，原图这么画是没错的，因为x1的范围相对于x2较大，所以导致$\theta_1$稍微变化一点，代价函数的值就会有更大的变化，这就是为什么在$\theta_1$轴上，等高线如此密集的原因。<br>　　　方法：尽量让所有的特征大致收缩在[-1,1]的范围之间，当然像[0,2]这样相对较小的也可以。</p>
+<h3 id="均值归一化"><a href="#均值归一化" class="headerlink" title="均值归一化"></a>均值归一化</h3><p>　　　均值归一化Mean normalization: Replace $x_i with x_i-/mu_i to make features have approximately zero mean$.(Don`t apply to $x_0$ = 1)<br>　　　上面这些是为了把特征值$x_i = \frac{x_i-\mu_i}{S_i}$<br>　　　$\mu_i$表示平均值，而$S_i$可以用样本集的方差或者极差(最大值减最小值)。<br>　　　以上的特征缩放是为了减少迭代次数，加快梯度下降的速度。</p>
+<h2 id="4-4学习率"><a href="#4-4学习率" class="headerlink" title="4.4学习率"></a>4.4学习率</h2><p>　　　两个目标:<br>　　　1.”Debugging”: 如何保证梯度下降正常工作<br>　　　2.如何选择学习率α</p>
+<h3 id="判断梯度下降正常工作"><a href="#判断梯度下降正常工作" class="headerlink" title="判断梯度下降正常工作"></a>判断梯度下降正常工作</h3><p>　　　<img src="/2020/03/01/MLD2/4-4_P1.png" alt="pic"><br>　　　画出最小代价函数值随着迭代次数变化的曲线图。随着迭代次数的上升代价函数逐渐收敛到一个最小值。</p>
+<h3 id="自动收敛测试"><a href="#自动收敛测试" class="headerlink" title="自动收敛测试"></a>自动收敛测试</h3><p>　　　automatic convergence test自动收敛测试: 如果在一次迭代中，J(θ)小于某个很小的数(如1e-3)，则视为函数已收敛。<br>　　　但是这个阈值时很难确定的，所以从上面的曲线图判断是否收敛比较好。</p>
+<h3 id="代价函数不随着迭代次数下降的异常情况"><a href="#代价函数不随着迭代次数下降的异常情况" class="headerlink" title="代价函数不随着迭代次数下降的异常情况"></a>代价函数不随着迭代次数下降的异常情况</h3><p>　　　<img src="/2020/03/01/MLD2/4-4_P2.png" alt="pic"><br>　　　1. 选取适合的学习率，代价函数会随着迭代次数上升下降<br>　　　2. 如果学习率过低，导致迭代次数过多<br>　　　3. 如果学习率过高，代价函数可能不会在迭代中减少或收敛。</p>
+<h2 id="4-5特征和多项式回归"><a href="#4-5特征和多项式回归" class="headerlink" title="4.5特征和多项式回归"></a>4.5特征和多项式回归</h2><p>　　　1. 特征量的选取要选取真正影响假设函数的特征。<br>　　　2. 多项式的选取也要根据数据的分布选取。（如二次函数随着x增加会先升后降，三次函数则会x增加升降升）</p>
+<h2 id="4-6正规方程（区别于迭代方法的直接解法）"><a href="#4-6正规方程（区别于迭代方法的直接解法）" class="headerlink" title="4.6正规方程（区别于迭代方法的直接解法）"></a>4.6正规方程（区别于迭代方法的直接解法）</h2><p>　　　<img src="/2020/03/01/MLD2/4-6_P1.png" alt="pic"><br>　　　一个方法是，对每一个θ进行求偏导数，并将导数置零（即求出能够让代价函数最小的时候θ的取值）。</p>
+<p>　　　另一个正规方程， 即列出矩阵方程求出参数，具体过程如下<br>　　　<img src="/2020/03/01/MLD2/4-6_P2.png" alt="pic"><br>　　　(这边就是如同Ax=y这种矩阵方程的求解)<br>　　　如果使用特征方程的话则不需要进行特征缩放。</p>
+<h3 id="梯度下降-即迭代方法-和正规方程的比较"><a href="#梯度下降-即迭代方法-和正规方程的比较" class="headerlink" title="梯度下降(即迭代方法)和正规方程的比较"></a>梯度下降(即迭代方法)和正规方程的比较</h3><p>$$<br>\begin{array}{l|l}<br>{Gradient　Descent}&amp;{Birnak　Equation}\\<br>\hline<br>{Need　to　choose　\alpha}&amp;{No　need　to　choose　\alpha}\\<br>{Need　many　iterations}&amp;{Don’t　need　to　iterate}\\<br>{Works　well　even　when　n　is　large}&amp;{Need　to　compute　\left(X^TX\right)^{-1}　and　slow　if　n　is　large　O\left(n^3\right)}\\<br>\end{array}<br>$$</p>
+<h2 id="4-7正规方程在矩阵不可逆情况下的解决方法"><a href="#4-7正规方程在矩阵不可逆情况下的解决方法" class="headerlink" title="4.7正规方程在矩阵不可逆情况下的解决方法"></a>4.7正规方程在矩阵不可逆情况下的解决方法</h2><p>　　　Otacle中的Pinv：Pseudo-inverse伪逆（我也没听说过）<br>　　　不可逆non-invertible有两种情况:<br>　　　1. 线性相关的特征(重复的特征)<br>　　　　　　-删除重复的特征<br>　　　2. 特征量过多，导致样本数少于特征数量。<br>　　　　　　-删除一些影响小的特征，或则使用正规化regularization。</p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客下划线数学渲染成斜体</title>
+    <url>/2020/03/01/%E5%8D%9A%E5%AE%A2%E4%B8%8B%E5%88%92%E7%BA%BF%E6%95%B0%E5%AD%A6%E6%B8%B2%E6%9F%93%E6%88%90%E6%96%9C%E4%BD%93/</url>
+    <content><![CDATA[<p>今天回看上次的笔记，发现数学渲染的一塌糊涂……<br>在博客找到解决方法<br><a href="https://segmentfault.com/a/1190000007261752" target="_blank" rel="noopener">Hexo下mathjax的转义问题</a><br>博客中提到两个，一个是更换markdown的渲染引擎，一个是更换mathhax的渲染引擎，另一个是更改渲染规则，我用的是第三个，路径在/nodes_modules/marked/lib/marked.js<br>ps: 我这边是在var inline的代码块里的，可能修改前内容和博客里的不一样，但是修改后的内容填进去后在博客里确实渲染成功了。<br><a href="https://www.jianshu.com/p/8b6fc36035c0" target="_blank" rel="noopener">Markdown-常用数学公式编辑命令</a><br>pps: 查的另一个博客的公式渲染都挂了，这么博主是什么神仙……  </p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习-Day_1</title>
+    <url>/2020/02/29/machine-learning/</url>
+    <content><![CDATA[<p><a href="https://www.bilibili.com/video/av50747658?from=search&seid=16348381955975479986" target="_blank" rel="noopener">视频链接</a>  </p>
+<p>关于吴恩达机器学习的笔记</p>
+<a id="more"></a>
+<h2 id="第一节"><a href="#第一节" class="headerlink" title="第一节"></a>第一节</h2><h3 id="机器学习的概述"><a href="#机器学习的概述" class="headerlink" title="机器学习的概述"></a>机器学习的概述</h3><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="数据挖掘"><a href="#数据挖掘" class="headerlink" title="数据挖掘"></a>数据挖掘</h4><p>　　如搜索引擎，医疗记录和生物工程等等</p>
+<h4 id="无法人工编程的项目"><a href="#无法人工编程的项目" class="headerlink" title="无法人工编程的项目"></a>无法人工编程的项目</h4><p>　　自动驾驶，字迹识别，自然语言理解ＮＬＰ和计算机视觉ＣＶ</p>
+<h4 id="个人定制推荐"><a href="#个人定制推荐" class="headerlink" title="个人定制推荐"></a>个人定制推荐</h4><h2 id="第二节"><a href="#第二节" class="headerlink" title="第二节"></a>第二节</h2><h3 id="定义机器学习"><a href="#定义机器学习" class="headerlink" title="定义机器学习"></a>定义机器学习</h3><h4 id="Arthur-Samuel’s-Definition"><a href="#Arthur-Samuel’s-Definition" class="headerlink" title="Arthur Samuel’s Definition"></a>Arthur Samuel’s Definition</h4><p>　　Fleid of study that gives computer the ability to learn without being explicitly programmed.</p>
+<h4 id="Tom-Mitchell"><a href="#Tom-Mitchell" class="headerlink" title="Tom Mitchell"></a>Tom Mitchell</h4><p>　　Well-posed Learning Problem: A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experence E.</p>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><p>　　对于某个垃圾邮件过滤系统， 分类出有无用的邮件是T，学习你对邮件的标记是E， 而被分类出的邮件的数量为P。</p>
+<h3 id="机器学习的分类"><a href="#机器学习的分类" class="headerlink" title="机器学习的分类"></a>机器学习的分类</h3><h4 id="监督学习supervised"><a href="#监督学习supervised" class="headerlink" title="监督学习supervised"></a>监督学习supervised</h4><p>　　人教会计算机做某事</p>
+<h4 id="无监督学习unsupervised"><a href="#无监督学习unsupervised" class="headerlink" title="无监督学习unsupervised"></a>无监督学习unsupervised</h4><p>　　<br>　　让机器自己学习</p>
+<h4 id="其他一些词"><a href="#其他一些词" class="headerlink" title="其他一些词"></a>其他一些词</h4><p>　　强化学习Reinforcement learning<br>　　推荐系统recommender systems  
+　　</p>
+<h2 id="第三节"><a href="#第三节" class="headerlink" title="第三节"></a>第三节</h2><h3 id="举例：房价预测"><a href="#举例：房价预测" class="headerlink" title="举例：房价预测"></a>举例：房价预测</h3><p>　　<img src="/2020/02/29/machine-learning/2_P1.png" alt="pic"><br>　　给出数据集，用函数拟合数据分布。问题在于用什么模型拟合数据。</p>
+<h3 id="监督学习定义"><a href="#监督学习定义" class="headerlink" title="监督学习定义"></a>监督学习定义</h3><p>　　we gave the algorithm a data set in which the “right answers” were given, That is, we gave it a data set of houses, in which for every example in this data set, we told it what is the right price, the task of the algorithm is to prodeve more of these tight answers.</p>
+<h4 id="回归问题Regressin-problem"><a href="#回归问题Regressin-problem" class="headerlink" title="回归问题Regressin problem"></a>回归问题Regressin problem</h4><p>　　Predict <strong>连续值continuous values</strong> output.</p>
+<h3 id="另一例子-预测肿瘤"><a href="#另一例子-预测肿瘤" class="headerlink" title="另一例子:预测肿瘤"></a>另一例子:预测肿瘤</h3><h4 id="分类问题classification-problem"><a href="#分类问题classification-problem" class="headerlink" title="分类问题classification problem"></a>分类问题classification problem</h4><p>　　<img src="/2020/02/29/machine-learning/2_P2.png" alt="pic"><br>　　trying to predict a <strong>离散值discrete valued</strong> output.</p>
+<h4 id="不止一个feature-attrubite"><a href="#不止一个feature-attrubite" class="headerlink" title="不止一个feature/attrubite"></a>不止一个feature/attrubite</h4><p>　　<img src="/2020/02/29/machine-learning/2_P3.png" alt="pic"></p>
+<h3 id="无穷量特征"><a href="#无穷量特征" class="headerlink" title="无穷量特征"></a>无穷量特征</h3><p>　　举例：支持向量机算法the support Vector Machine</p>
+<h2 id="第四节"><a href="#第四节" class="headerlink" title="第四节"></a>第四节</h2><h3 id="无监督学习定义"><a href="#无监督学习定义" class="headerlink" title="无监督学习定义"></a>无监督学习定义</h3><p>　　给出大量的数据集要求它找出数据的类型结构。</p>
+<h4 id="聚类算法cluster-algorithm"><a href="#聚类算法cluster-algorithm" class="headerlink" title="聚类算法cluster algorithm"></a>聚类算法cluster algorithm</h4><p>　　<img src="/2020/02/29/machine-learning/3_P1.png" alt="pic"></p>
+<h5 id="举例：谷歌新闻"><a href="#举例：谷歌新闻" class="headerlink" title="举例：谷歌新闻"></a>举例：谷歌新闻</h5><p>　　搜索新闻并自动分簇</p>
+<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><p>　　组织大型计算机集群<br>　　社交网络分析<br>　　细分市场<br>　　天文数据分析</p>
+<h4 id="鸡尾酒会"><a href="#鸡尾酒会" class="headerlink" title="鸡尾酒会"></a>鸡尾酒会</h4><p>　　两个人说话，由两个不同位置的麦克风录音。（即声音分离）。<br>　　[W,s,v] = svd(((repmat(sum（x.<em>x,1),size(x,1),1).</em>x)*x’);</p>
+<h4 id="工具和环境"><a href="#工具和环境" class="headerlink" title="工具和环境"></a>工具和环境</h4><h5 id="Octave"><a href="#Octave" class="headerlink" title="Octave"></a>Octave</h5><h2 id="2-1模型描述"><a href="#2-1模型描述" class="headerlink" title="2.1模型描述"></a>2.1模型描述</h2><h3 id="（数据集）训练集"><a href="#（数据集）训练集" class="headerlink" title="（数据集）训练集"></a>（数据集）训练集</h3><p>　　<strong>m</strong> = 训练样本数量<br>　　<strong>x</strong>‘s = 输入的变量或特征<br>　　<strong>y</strong>‘s = 输出或目标变量<br>　　(x,y) 为一个输出样本<br>　　$(x^{(i)}, y^{(i)})$ 表示第i个样本  
+　　</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>　　<img src="/2020/02/29/machine-learning/2-1_P1.png" alt="pic"><br>　　向学习函数learning algorithm提供训练集training set，由学习函数输出假设函数h hypothesis，h is a func make x map from x to y.</p>
+<h4 id="how-do-we-represent-h"><a href="#how-do-we-represent-h" class="headerlink" title="how do we represent h?"></a>how do we represent h?</h4><p>　　$$ h_θ(x) = θ_0 + θ_1x $$<br>　　<strong>the univariate linear regressoin</strong> 单变量线性回归</p>
+<h2 id="2-2代价函数-数学定义"><a href="#2-2代价函数-数学定义" class="headerlink" title="2.2代价函数-数学定义"></a>2.2代价函数-数学定义</h2><p>　　$θ_i$: the Parameter of the model 模型参数  </p>
+<h3 id="some-diffierent-models"><a href="#some-diffierent-models" class="headerlink" title="some diffierent models"></a>some diffierent models</h3><p>　　<img src="/2020/02/29/machine-learning/2-2_P1.png" alt="pic"><br>　　Goal: 找到一个使得$ \frac {1}{2m} \sum_{i=1}^m(h_θ(x^{i})-y)^2 $ 最小的参数  </p>
+<h3 id="the-cost-function"><a href="#the-cost-function" class="headerlink" title="the cost function"></a>the cost function</h3><p>　　 $ \mathtt{J} \left( θ_0,θ_1x \right) = \frac {1}{2m} \sum_{i=1}^m {\left( h_θ \left( x^{i} \right ) -y \right)} ^2 $<br>　　 代价函数 also recognized as <strong>squre error cost function</strong>.</p>
+<h2 id="2-3-4代价函数-应用"><a href="#2-3-4代价函数-应用" class="headerlink" title="2.3-4代价函数-应用"></a>2.3-4代价函数-应用</h2><h3 id="the-graph-of-two-funtion-hypothesis-amp-amp-cost"><a href="#the-graph-of-two-funtion-hypothesis-amp-amp-cost" class="headerlink" title="the graph of two funtion(hypothesis &amp;&amp; cost)"></a>the graph of two funtion(hypothesis &amp;&amp; cost)</h3><p>　　以下为$θ_0 = 0$的情况<br>　　<img src="/2020/02/29/machine-learning/2-2_P2.png" alt="pic"><br>　　h(x)的自变量是给定θ后x的函数，J(θ)是参数θ的函数  </p>
+<p>　　以下为不等于0的情况<br>　　由于是两个参数，所以代价函数使用等高线contour figure表示<br>　　<img src="/2020/02/29/machine-learning/2-2_P3.png" alt="pic">
+　　</p>
+<h2 id="2-5梯度下降Gredient-descent"><a href="#2-5梯度下降Gredient-descent" class="headerlink" title="2.5梯度下降Gredient descent"></a>2.5梯度下降Gredient descent</h2><h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><p>　　1、Start with some initial value<br>　　2、Keep changing to reduce cost func until it end up at a minimum</p>
+<h3 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h3><p>　　 个人理解:任意选定一个起始点，决定一个最佳下降的方向迈出一步，然后从新起点出发，循环上述过程，直到收敛到局部最低点。  </p>
+<h3 id="数学描述"><a href="#数学描述" class="headerlink" title="数学描述"></a>数学描述</h3><p>　　 repeat until convergence{<br>　　 　　 $θ_j := θ_0 - α\frac{∂}{∂θ_j}J\left(θ_0,θ_1\right)　　 \left(for \; j = 0 \; and \; j = 1 \; \right)$<br>　　 }  </p>
+<p>　　 α is called <strong>the learning rate</strong> 学习率<br>　　 Correct: Simultaneous update 同时更新<br>　　 <img src="/2020/02/29/machine-learning/2-5_P1.png" alt="pic"></p>
+<h2 id="2-6梯度下降知识点总结"><a href="#2-6梯度下降知识点总结" class="headerlink" title="2.6梯度下降知识点总结"></a>2.6梯度下降知识点总结</h2><p>　　 $ \frac{∂}{∂θ_j}J\left(θ_0,θ_1\right) $ 就是代价函数在θ点上的斜率。更新的理论如图：<br>　　 <img src="/2020/02/29/machine-learning/2-6_P1.png" alt="pic"><br>　　 在上面的图像中，斜率为正数，α一定为正数，故θ向左移动。<br>　　 在下面的图像中，斜率为负数，α为正数，故θ向右移动。两侧都在往最低点收敛。  </p>
+<p>　　 <img src="/2020/02/29/machine-learning/2-6_P2.png" alt="pic"><br>　　 如果α太大时，梯度下降速度较慢，反之则较快。<br>　　 当达到局部最低点时，斜率为0，θ保持。由导数项和学习率共同控制下降幅度。</p>
+<h2 id="2-7线性回归的梯度下降"><a href="#2-7线性回归的梯度下降" class="headerlink" title="2.7线性回归的梯度下降"></a>2.7线性回归的梯度下降</h2><p>　　<img src="/2020/02/29/machine-learning/2-7_P1.png" alt="pic"><br>　  <img src="/2020/02/29/machine-learning/2-7_P2.png" alt="pic"><br>　  注意右式是求导之后的结果，将假设函数h(x)展开之后会更好理解。<br>　  $ θ_0 := θ_0 - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}^2 $<br>　  $ θ_0 := θ_0 - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}^2 \dot x^{\left(i\right)}$<br>　  线性回归梯度下降结果是一个凸函数convex function.只有一个全局最优解。<br>　  “Batch” Gradient Descent指每一次梯度下降都使用了所有了训练集。<br>　  BB一句，线性回归方程在概率论有参数估计的方法，老师也说在大数据集中梯度下降才有更好的表现。</p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用多张照片拼接成一个照片</title>
+    <url>/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>　　朋友的生日快到啦，每年都会想一些奇奇怪怪的东西作为礼物= =，机缘巧合下，在b站看到了用多个图片拼接一个大照片思路 -&gt;<a href="https://www.bilibili.com/video/av90485405" target="_blank" rel="noopener">传送门</a>，这个up用的是一个软件，但是感觉自己也可以用opencv来实现= =，于是便写了这么一个程序……<br>　　想想用朋友的偶像照片拼出朋友的自拍感觉会被打XD<br>　　<a href="https://github.com/Misaka-Mikodo/splice_picture" target="_blank" rel="noopener">源码</a>  </p>
+<a id="more"></a>
+
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="获取图片"><a href="#获取图片" class="headerlink" title="获取图片"></a>获取图片</h2><p>　　主要要获取的图片是需要拼接的大图片和被拼接的小图片。我这边打算用朋友的自拍，小图片的获取比较难，小图片越多颜色会更加贴近，我使用的是200张偶像照片作为资源库。一个个从网上下载下来自然很慢，所以需要爬虫爬取一些照片，不会爬取只能求助一下万能的CSDN^^<br>　　-&gt;博客的<a href="https://blog.csdn.net/qq_40774175/article/details/81273198" target="_blank" rel="noopener">传送门</a><br>　　PS：注意在name.txt里填写你要爬取的照片的关键字<br>　　爬取结果如图所示<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/file.jpg" alt="爬取结果"></p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>　　简单的思路就是每一张照片都有大致的色调，我把每个照片从几万像素点resize到几百的像素点，计算平均的RBG值，记录在vector里面。其次对大图进行分块，也是找到块中平均的RGB值，填入最接近的找到最接近的RGB值的小图。<br>　　这边有个注意点，如果想做一个高清的拼接图，必须在resize之前就把小图存起来，否则resize后的小图就是像素点……建议调试时用resize之后的小图，等到调试成功的时候再存入原图进行拼接，否则会浪费很多时间在拼接小图上。<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/finish.jpg" alt="结果"><br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/tiger.jpg" alt="比较"> </p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>　　基本上没有什么大问题，小问题像是获取像素点的时候把x和y值搞反了，如果在获取像素点的时候发生了段错误基本上是因为这边–。<br>　　<img src="/2020/02/26/%E7%94%A8%E5%A4%9A%E5%BC%A0%E7%85%A7%E7%89%87%E6%8B%BC%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%85%A7%E7%89%87/bug.jpg" alt="翻车">  </p>
+<h1 id="改进的思路"><a href="#改进的思路" class="headerlink" title="改进的思路"></a>改进的思路</h1><h2 id="关于颜色单一的问题"><a href="#关于颜色单一的问题" class="headerlink" title="关于颜色单一的问题"></a>关于颜色单一的问题</h2><p>　　如果资源库的图片不够多，且大图颜色较为单一时，图像在拼接的时候很容易就出现同一张图片多次出现的情况，这样就不能很好的把所有图片利用起来，这里我想到在每一个小图设置一个优先级priority，使用过一次之后降低它的优先级，允许其他张图片来补充这一块像素，当然为了防止颜色差异过大，仍然需要在一定的误差内。<br>　　例如A图和B图和C图，优先级相同都为0，误差计算公式为 $目前最小误差±优先级$ 某一块的RGB均值与三张图的RGB差分别为1，2，4，那么首先找到差值最小的A图，优先级减低为1，其次再寻找的时候再遍历一次三个图，发现B图是优先级最高，且满足误差范围[0,2],故选择B图。<br>　　第三次寻找误差范围是[0,3],此时没有高优先级的图满足，所以在优先级为1的图中找误差最小的A图，A图优先级变成2，误差范围[0,4],此时C图满足误差范围且优先级最高，故选择C图，这么选择的话既能保证用上了尽量多的图片，又能保证颜色误差不会过大。  </p>
+<h2 id="关于识别图像"><a href="#关于识别图像" class="headerlink" title="关于识别图像"></a>关于识别图像</h2><p>　　在找图片对应的时候，用RGB均值差找到相近图像只是一个比较粗略的办法，需要切割到足够小块才能保证和大图相近，但是在现实情况下这么处理很花时间，如果能通过图像识别的方法来处理的话能大大加快对应和拼接的进度，相关知识在下方的博客有介绍：<br>　　<a href="http://www.ruanyifeng.com/blog/2011/07/principle_of_similar_image_search.html" target="_blank" rel="noopener">相似图片搜索的原理</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>学校管理系统</title>
+    <url>/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h1 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h1><h2 id="进度"><a href="#进度" class="headerlink" title="进度"></a>进度</h2><p>大概花了一天的时间学习wxss和wxml的语法，就勉强上来写项目了，由于之前有过一些学习的经验吧，所以上手还是挺快的，跳过了组件的介绍，打算之后有遇到再学习。目前第一天的进度是在创建了一个主页面<br><img src="/2020/02/24/%E5%AD%A6%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/main-page.jpg" alt="主页面"><br>其它页面的功能尚未设计，本来计划两天解决，看来是想太多了<br>计划后面的话是一天实现一个页面的功能  </p>
+<a id="more"></a>
+
+<h2 id="遇到的一些问题"><a href="#遇到的一些问题" class="headerlink" title="遇到的一些问题"></a>遇到的一些问题</h2><h3 id="git的使用尚不明确"><a href="#git的使用尚不明确" class="headerlink" title="git的使用尚不明确"></a>git的使用尚不明确</h3><p>这边做项目打算用git记录每次项目的进度，并且每天git push到github上，但是目前熟悉的只是基础的add、merge、commit等功能，一旦遇到冲突的话就没办法解决了，虽然教程有说方法，但是打算等遇到了再去看教程</p>
+<h3 id="icon的寻找"><a href="#icon的寻找" class="headerlink" title="icon的寻找"></a>icon的寻找</h3><p>推荐一个好的网站<a href="https://www.iconfont.cn/?spm=a313x.7781069.1998910419.d4d0a486a" target="_blank" rel="noopener">阿里巴巴的icon</a>，这里有很多的icon使用  </p>
+]]></content>
+  </entry>
+  <entry>
+    <title>python上generator 的一些疑惑</title>
+    <url>/2020/02/10/python%E4%B8%8Agenerator-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/</url>
+    <content><![CDATA[<h2 id="Python的Generator"><a href="#Python的Generator" class="headerlink" title="Python的Generator"></a>Python的Generator</h2><p>　　<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017318207388128" target="_blank" rel="noopener">教程及题目链接</a><br>　　<a href="https://blog.csdn.net/mieleizhi0522/article/details/82142856" target="_blank" rel="noopener">关于yield的博客</a><br>　　目前遇到的一个问题是关于生成器yield的一些疑惑，即教程里那一道杨辉三角</p>
+<a id="more"></a>
+
+<h2 id="一开始的理解"><a href="#一开始的理解" class="headerlink" title="一开始的理解"></a>一开始的理解</h2><p>　　<br>　　一开始我认为python的yield是类似压栈存储数据的作用(运行流程类似断点)，具体原理可以参考上面的博客，即yield相当于一次调用的终点，然后下一次是从上面yield的地方继续下去的。<br>　　但是数据上的存储不是简单的数据压栈，因为yield存进去的不是数据而是地址，可以看一下下面这个代码的运行结果。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">triangles</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    L = [<span class="number">1</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">yield</span> L</span></pre></td></tr><tr><td class="code"><pre><span class="line">        L += [<span class="number">0</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">n = <span class="number">0</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">results = []</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> triangles():</span></pre></td></tr><tr><td class="code"><pre><span class="line">    results.append(t)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    n = n + <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> n == <span class="number">5</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">break</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(results)</span></pre></td></tr></table></figure>
+
+<p>　　运行结果：<br>　　<code>[[1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0]]</code><br>　　可以看出results里的所有数据都是同一个元素</p>
+<h2 id="另外一个修改后的代码"><a href="#另外一个修改后的代码" class="headerlink" title="另外一个修改后的代码"></a>另外一个修改后的代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">triangles</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    L = [<span class="number">1</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">yield</span> L</span></pre></td></tr><tr><td class="code"><pre><span class="line">        L = L + [<span class="number">0</span>] <span class="comment">#改动的地方</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">n = <span class="number">0</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">results = []</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> triangles():</span></pre></td></tr><tr><td class="code"><pre><span class="line">    results.append(t)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    n = n + <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> n == <span class="number">5</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">break</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(results)</span></pre></td></tr></table></figure>
+
+<p>　　运行结果：</p>
+<p>　　<code>[[1], [1, 0], [1, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0, 0]]</code></p>
+<h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>　　python里面的数据都是动态的，L += [0]只是基于同一个地址进行修改，所以在results里面的元素其实都是指向同一个list，而L = L + [0]是形成了一个新的数据，所以在yield的时候导入了“新地址”（至于是否是用一个地址，还是新的地址但是是同一个值，原因无法确定）<br>　　但是这一个结果告诉我们，python里面L = L + [0] 和 L += [0]两个式子并不是完全等价的，这是一个和C语言不同的地方</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>初探githubDesktop的使用</title>
+    <url>/2020/01/15/%E5%88%9D%E6%8E%A2githubDesktop%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>opencv_draw</title>
+    <url>/2019/12/07/opencv-draw/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Hexo的第一次安装</title>
+    <url>/2019/12/06/Hexo-install/</url>
+    <content><![CDATA[<h2 id="选择Hexo的原因"><a href="#选择Hexo的原因" class="headerlink" title="选择Hexo的原因"></a>选择Hexo的原因</h2><p>　　当时单纯是因为一个喜欢的up主<a href="https://space.bilibili.com/384068749?from=search&seid=2197445177359928357" target="_blank" rel="noopener" codesheep的b站空间"">codesheep</a>的一个更新,up讲的挺仔细的，我第一次装+配环境（除了git，我之前就装过了），大概花了我1小时的时间，总之还是挺高效的。<br>　　当然，如果你是第一次想要装博客，选择还是挺多的，像我的同学就是采用了JeKyll去搭建的。-&gt;<a href="https://wu-kan.github.io/posts/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%9F%BA%E4%BA%8EJekyll%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2" target="_blank" rel="noopener">传送门</a>，不同的框架有不同的优点吧，这边我记录一下在windows10环境下安装hexo的过程。</p>
+<a id="more"></a>
+
+<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><p>　　首先下载一个nodejs的软件。因为我是windows10 64位系统，所以选择的是图中所高亮的那个安装包。<br><br> <img src="/2019/12/06/Hexo-install/nodejs_install.png" alt="Hexo-install"><br>　　下载之后就可以安装啦。这边注意：如果你要装在其它路径下要先创建好对应的文件夹再放进去，否则会直接把一大堆文件塞进你选定的路径……<br><br> <img src="/2019/12/06/Hexo-install/nodejs_comp.png" alt="Hexo-install">  <img src="/2019/12/06/Hexo-install/nodejs_path.png" alt="Hexo-install"><br>　　安装成功后进去cmd界面查看，若能显示出对应的版本号说明安装成功了。<br>　　<code>node --version</code><br>　　<code>npm --version</code><br><br> <img src="/2019/12/06/Hexo-install/correct.png" alt="Hexo-install"><br>　　接下来使用npm下载cnpm，用的是淘宝的镜像源。<br>　　<code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br><br> <img src="/2019/12/06/Hexo-install/cmd_cpm.png" alt="Hexo-install"><br>　　安装成果后输入<code>cnpm --version</code>查看安装情况，若显示出对应的版本号说明安装正确。<br> <img src="/2019/12/06/Hexo-install/cmd_cnpm_comp.png" alt="Hexo-install"><br>　　下载完cnpm后，再用cnpm来下载hexo。首先先输入<code>mkdir blog</code>创建一个文件夹，然后进入该文件夹，在这里要注意，<strong>接下来的所有操作都是在这个文件夹进行的</strong>，完成后就可以输入<code>cnpm install -g hexo-cli</code>进行安装了，安装过程如下：<br><br> <img src="/2019/12/06/Hexo-install/cmd_hexo.png" alt="Hexo-install"><br>　　查看是否安装成功<code>hexo -v</code><br><br> <img src="/2019/12/06/Hexo-install/cmd_hexo_v.png" alt="Hexo-install"><br>　　hexo初始化<code>hexo init</code>……这边是后面在windows装的，git还没下，所以会有这么一个错误<br><br> <img src="/2019/12/06/Hexo-install/cmd_Wrong_git.png" alt="Hexo-install"><br>　　在百度上下载<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a>就可以了，感觉速度有点慢，应该是需要翻墙吧……当然我用我们的校网等了一小段时间下好了，下面是安装界面<br><br> <img src="/2019/12/06/Hexo-install/git_install.png" alt="Hexo-install">　　<br>　　记得记一下安装路径……我安装后它没有给我配置系统路径，所以需要自己配一下。<br><br> <img src="/2019/12/06/Hexo-install/git_set_Patg.png" alt="Hexo-install">　　<br><br> <img src="/2019/12/06/Hexo-install/sys_path.png" alt="Hexo-install"><br>　　依旧的，需要查看一下是不是配置好了<br>　　<code>git --version</code><br><br> <img src="/2019/12/06/Hexo-install/git_comp.png" alt="Hexo-install"><br>　　配置好之后，从上面失败的地方开始。即使用hexo init继续初始化。<br><br> <img src="/2019/12/06/Hexo-install/hexo_comp.png" alt="Hexo-install"><br>　　然后输入<br>　　<code>hexo s</code><br><br> <img src="/2019/12/06/Hexo-install/hexo_test.png" alt="Hexo-install"><br>进行调试，打开浏览器输入<br>　　<code>localhost:4000</code><br>出现以下界面你说明安装成功<br><br> <img src="/2019/12/06/Hexo-install/hexo_s.png" alt="Hexo-install"><br>　　到了这一步说明你已经安装成功啦，你可以为自己新建一篇命名叫”Hexo_install”博文，命令如下<br>　　<code>hexo n Hexo_install</code><br>这篇文章会生成在你的文件下的source_posts\里，你可以对其进行编辑，注意这里使用的是markdown语言。<br><br> <img src="/2019/12/06/Hexo-install/first_text.png" alt="Hexo-install"><br>　　下一步是把你的博客建在github上面，首先先下载一个插件:<code>cnpm install --save hexo-deployer-git</code>,安装后的结果如图所示。<br><br> <img src="/2019/12/06/Hexo-install/hexo_deployer.png" alt="Hexo-install"><br>　　然后你要在github注册一个账号，申请一个仓库，获取到你的web URL。<br><br> <img src="/2019/12/06/Hexo-install/the_link.png" alt="Hexo-install"><br>　　进入blog文件夹，编辑<code>_config.yml</code>文件，找到deploy一栏，输入以下代码，记得repo一栏填写的是上面在github上获取的那一个序列。<br><br> <img src="/2019/12/06/Hexo-install/config.png" alt="Hexo-install"><br>　　输入完后，在blog目录下输入<code>hexo clean</code>,清除缓存后输入<code>hexo g -d</code>提交，这里会弹出一个窗口让你输入你的github账号和密码。<br><br> <img src="/2019/12/06/Hexo-install/login.png" alt="Hexo-install"><br>　　deploy之后，等待一段时间，输入自己的博客账号，像我的就是<code>账户名.github.io</code>,打开之后即可看自己的博客。</p>
+<h2 id="可能会遇到的问题（后面看看会不会更新–）"><a href="#可能会遇到的问题（后面看看会不会更新–）" class="headerlink" title="可能会遇到的问题（后面看看会不会更新–）"></a>可能会遇到的问题（后面看看会不会更新–）</h2><h3 id="怎么配置系统环境"><a href="#怎么配置系统环境" class="headerlink" title="怎么配置系统环境"></a>怎么配置系统环境</h3><h3 id="怎么样在github上创建仓库"><a href="#怎么样在github上创建仓库" class="headerlink" title="怎么样在github上创建仓库"></a>怎么样在github上创建仓库</h3><h3 id="markdown的一些语法"><a href="#markdown的一些语法" class="headerlink" title="markdown的一些语法"></a>markdown的一些语法</h3><p>　　未完待续……</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2019/12/06/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
