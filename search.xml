@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>机器学习-Day_5</title>
+    <url>/2020/03/04/MLD5/</url>
+    <content><![CDATA[<h2 id="6-1分类"><a href="#6-1分类" class="headerlink" title="6.1分类"></a>6.1分类</h2><p>　　　是/否，可以有两个取值的变量<br>　　　$$y\in\left\{0,1\right\}$$<br>　　　0: 负类”Negative Class”(e.g., benign tumor)<br>　　　1: 正类”Positive Class”(e.g., malignant tumor)<br>　　　如果y取值多的叫多分类</p>
+<p>　　　<img src="/2020/03/04/MLD5/6-1_P1.png" alt="pic"><br>　　　如果和线性回归一样设假设函数，设置阈值为0.5，即如果假设函数值等于阈值时，对应的横坐标左侧的函数值都视为0，反之视为1.<br>　　　但是这种方法在有极端数据之后，假设函数在图像上的斜率变小，从而当函数值等于阈值时，有很多呈阳性的肿瘤被判断成阴性（在阈值对应的横坐标的左侧），从而造成错误的预测。所以线性回归不适合运用在分类问题。<br>　　　而且使用线性回归时，假设函数值可能会远大于1或者远小于0，这显得很奇怪。<br>　　　（个人感觉并不奇怪，因为有设定一个阈值，关键问题在于线性回归会受到偏于优势的数据的影响，类如上面那个例子，设肿瘤体积小于2为分类标准，如果数据点集中在小于2的部分，则会斜率增加，把原本属于阴性的误判为阳性的，同理对阳性也是如此）</p>
+<p>　　　<strong>逻辑回归Logistic Regression</strong>可以保证加黑色函数值能够保持在[0,1]</p>
+<h2 id="6-2假设陈述"><a href="#6-2假设陈述" class="headerlink" title="6-2假设陈述"></a>6-2假设陈述</h2><p>　　　原来的线性回归方程假设为$h_\theta\left(x\right) = \theta^Tx$<br>那么逻辑方程就令$$h_\theta\left(x\right) = g(\theta^Tx)$$<br>$$g(z) = \frac{1}{1+e^{-z}}$$<br>　　　<strong>Sigmoid function = Logistic function</strong>都指代g函数<br>$$h_\theta\left(x\right) = \frac{1}{1+e^{-\theta^Tx}}$$<br>　　　<img src="/2020/03/04/MLD5/6-1_P2.png" alt="pic"><br>　　　假设函数的图像大约如上图所示。</p>
+<p>　　　在逻辑回归方程里的假设函数$h_\theta\left(x\right)$表示估计当x取某值时y=1的概率。<br>　　　即概率论里的条件概率，也可以写为$P\left(y=0|x;\theta\right)$</p>
+<h2 id="6-3决策界限"><a href="#6-3决策界限" class="headerlink" title="6-3决策界限"></a>6-3决策界限</h2><p>　　　决策界限decision boundary: </p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ML_ex1</title>
     <url>/2020/03/03/ML-ex1/</url>
     <content><![CDATA[<p>吴恩达机器学习习题ex1解答<br>原题可以在这里找到，需要用邮箱注册，不需要翻墙<br><a href="https://www.coursera.org/learn/machine-learning/home/welcome" target="_blank" rel="noopener">coursera学习网站，类似中国的mooc</a></p>
@@ -62,7 +76,7 @@
 <h3 id="Hypothesis"><a href="#Hypothesis" class="headerlink" title="Hypothesis"></a>Hypothesis</h3><p>　　　过去是单变量的线性回归，随着特征量的增加，需要对假设函数修改<br>　　　$$h_{\theta}\left(x\right) = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3$$<br>　　　这里的x0的取值默认取1，之所以这么取是可能是为了向量的纬度对齐。<br>　　　于是便可以写成如下形式<br>$$<br>x =<br>\begin{bmatrix}<br>x_0\\\<br>x_1\\\<br>x_2\\\<br>\vdots \\\<br>x_n<br>\end{bmatrix}<br><br>\theta =<br>\begin{bmatrix}<br>\theta_0\\\<br>\theta_1\\\<br>\theta_2\\\<br>\vdots\\\<br>\theta_n<br>\end{bmatrix}<br>$$<br>$$ h_{\theta}\left(x\right) = \theta^Tx$$<br>　　　这里要注意内外积的区别，因为结果是一个标量而不是一个矩阵，所以是前面的theta转置。</p>
 <h2 id="4-2多元梯度下降法"><a href="#4-2多元梯度下降法" class="headerlink" title="4.2多元梯度下降法"></a>4.2多元梯度下降法</h2><p>　　　假设函数: $h_{\theta}\left(x\right) = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3$<br>　　　参数: $\theta_0,\theta_1,\cdots,\theta_n$<br>　　　代价函数:<br>$$J\left(\theta_0,\theta_1,\cdots,\theta_n\right)=\frac {1}{2m} \sum_{i=1}^m {\left( h_θ \left( x^{i} \right) -y \right)} ^2$$<br>　　　梯度下降<br>　　　$θ_j := θ_0 - α\frac{∂}{∂θ_j}J\left(\theta_0,\theta_1,\cdots,\theta_n\right)$<br>　　　<img src="/2020/03/01/MLD2/4-2_P1.png" alt="pic"><br>　　　常数项1声明为了$x_0$，所以$\theta_0$的情况也包含了进去。</p>
 <h2 id="4-3特征缩放"><a href="#4-3特征缩放" class="headerlink" title="4.3特征缩放"></a>4.3特征缩放</h2><h3 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h3><p>　　　特征缩放Feature Scaling: make sure feature are on a similar scale.<br>　　　<img src="/2020/03/01/MLD2/4-3_P1.png" alt="pic"><br>　　　由于卧室数量和房子面积比例为400:1, 所以会导致在画代价函数图像的时候画出的椭圆太扁平。为了方便收敛，采取右边的对特征量进行缩放的方法。<br>　　　看弹幕提到一个问题，这个椭圆是竖着还是躺着，原图这么画是没错的，因为x1的范围相对于x2较大，所以导致$\theta_1$稍微变化一点，代价函数的值就会有更大的变化，这就是为什么在$\theta_1$轴上，等高线如此密集的原因。<br>　　　方法：尽量让所有的特征大致收缩在[-1,1]的范围之间，当然像[0,2]这样相对较小的也可以。</p>
-<h3 id="均值归一化"><a href="#均值归一化" class="headerlink" title="均值归一化"></a>均值归一化</h3><p>　　　均值归一化Mean normalization: Replace $x_i$ with $x_i-/mu_i$ to make features have approximately zero mean.(Don`t apply to $x_0$ = 1)<br>　　　上面这些是为了把特征值$x_i = \frac{x_i-\mu_i}{S_i}$<br>　　　$\mu_i$表示平均值，而$S_i$可以用样本集的方差或者极差(最大值减最小值)。<br>　　　以上的特征缩放是为了减少迭代次数，加快梯度下降的速度。</p>
+<h3 id="均值归一化"><a href="#均值归一化" class="headerlink" title="均值归一化"></a>均值归一化</h3><p>　　　均值归一化Mean normalization: Replace $x_i$ with $x_i-\mu_i$ to make features have approximately zero mean.(Don`t apply to $x_0$ = 1)<br>　　　上面这些是为了把特征值$x_i = \frac{x_i-\mu_i}{S_i}$<br>　　　$\mu_i$表示平均值，而$S_i$可以用样本集的方差或者极差(最大值减最小值)。<br>　　　以上的特征缩放是为了减少迭代次数，加快梯度下降的速度。</p>
 <h2 id="4-4学习率"><a href="#4-4学习率" class="headerlink" title="4.4学习率"></a>4.4学习率</h2><p>　　　两个目标:<br>　　　1.”Debugging”: 如何保证梯度下降正常工作<br>　　　2.如何选择学习率α</p>
 <h3 id="判断梯度下降正常工作"><a href="#判断梯度下降正常工作" class="headerlink" title="判断梯度下降正常工作"></a>判断梯度下降正常工作</h3><p>　　　<img src="/2020/03/01/MLD2/4-4_P1.png" alt="pic"><br>　　　画出最小代价函数值随着迭代次数变化的曲线图。随着迭代次数的上升代价函数逐渐收敛到一个最小值。</p>
 <h3 id="自动收敛测试"><a href="#自动收敛测试" class="headerlink" title="自动收敛测试"></a>自动收敛测试</h3><p>　　　automatic convergence test自动收敛测试: 如果在一次迭代中，J(θ)小于某个很小的数(如1e-3)，则视为函数已收敛。<br>　　　但是这个阈值时很难确定的，所以从上面的曲线图判断是否收敛比较好。</p>
