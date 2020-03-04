@@ -173,13 +173,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="6-1分类"><a href="#6-1分类" class="headerlink" title="6.1分类"></a>6.1分类</h2><p>　　　是/否，可以有两个取值的变量<br>　　　$$y\in\left\{0,1\right\}$$<br>　　　0: 负类”Negative Class”(e.g., benign tumor)<br>　　　1: 正类”Positive Class”(e.g., malignant tumor)<br>　　　如果y取值多的叫多分类</p>
-<p>　　　<img src="/2020/03/04/MLD5/6-1_P1.png" alt="pic"><br>　　　如果和线性回归一样设假设函数，设置阈值为0.5，即如果假设函数值等于阈值时，对应的横坐标左侧的函数值都视为0，反之视为1.<br>　　　但是这种方法在有极端数据之后，假设函数在图像上的斜率变小，从而当函数值等于阈值时，有很多呈阳性的肿瘤被判断成阴性（在阈值对应的横坐标的左侧），从而造成错误的预测。所以线性回归不适合运用在分类问题。<br>　　　而且使用线性回归时，假设函数值可能会远大于1或者远小于0，这显得很奇怪。<br>　　　（个人感觉并不奇怪，因为有设定一个阈值，关键问题在于线性回归会受到偏于优势的数据的影响，类如上面那个例子，设肿瘤体积小于2为分类标准，如果数据点集中在小于2的部分，则会斜率增加，把原本属于阴性的误判为阳性的，同理对阳性也是如此）</p>
-<p>　　　<strong>逻辑回归Logistic Regression</strong>可以保证加黑色函数值能够保持在[0,1]</p>
-<h2 id="6-2假设陈述"><a href="#6-2假设陈述" class="headerlink" title="6-2假设陈述"></a>6-2假设陈述</h2><p>　　　原来的线性回归方程假设为$h_\theta\left(x\right) = \theta^Tx$<br>那么逻辑方程就令$$h_\theta\left(x\right) = g(\theta^Tx)$$<br>$$g(z) = \frac{1}{1+e^{-z}}$$<br>　　　<strong>Sigmoid function = Logistic function</strong>都指代g函数<br>$$h_\theta\left(x\right) = \frac{1}{1+e^{-\theta^Tx}}$$<br>　　　<img src="/2020/03/04/MLD5/6-1_P2.png" alt="pic"><br>　　　假设函数的图像大约如上图所示。</p>
-<p>　　　在逻辑回归方程里的假设函数$h_\theta\left(x\right)$表示估计当x取某值时y=1的概率。<br>　　　即概率论里的条件概率，也可以写为$P\left(y=0|x;\theta\right)$</p>
-<h2 id="6-3决策界限"><a href="#6-3决策界限" class="headerlink" title="6-3决策界限"></a>6-3决策界限</h2><p>　　　决策界限decision boundary: </p>
-
+        <p>吴恩达机器学习-Day_5</p>
+        
+          <a class="article-more-a" href="/2020/03/04/MLD5/#more">more >></a>
+        
       
 
       

@@ -8,17 +8,26 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>机器学习-Day_5 | Misaka-Mikodo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="6.1分类　　　是&#x2F;否，可以有两个取值的变量　　　$$y\in\left\{0,1\right\}$$　　　0: 负类”Negative Class”(e.g., benign tumor)　　　1: 正类”Positive Class”(e.g., malignant tumor)　　　如果y取值多的叫多分类 　　　　　　如果和线性回归一样设假设函数，设置阈值为0.5，即如果假设函数值等于阈值时">
+  <meta name="description" content="吴恩达机器学习-Day_5">
 <meta name="keywords" content="&#x2F;machineLearning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习-Day_5">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;index.html">
 <meta property="og:site_name" content="Misaka-Mikodo">
-<meta property="og:description" content="6.1分类　　　是&#x2F;否，可以有两个取值的变量　　　$$y\in\left\{0,1\right\}$$　　　0: 负类”Negative Class”(e.g., benign tumor)　　　1: 正类”Positive Class”(e.g., malignant tumor)　　　如果y取值多的叫多分类 　　　　　　如果和线性回归一样设假设函数，设置阈值为0.5，即如果假设函数值等于阈值时">
+<meta property="og:description" content="吴恩达机器学习-Day_5">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-1_P1.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-1_P2.png">
-<meta property="og:updated_time" content="2020-03-04T07:13:16.933Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-3_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-3_P2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-4_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-4_P2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-4_P3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-5_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-5_P2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-6_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-7_P1.png">
+<meta property="og:updated_time" content="2020-03-04T15:38:07.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;MLD5&#x2F;6-1_P1.png">
   
@@ -176,12 +185,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="6-1分类"><a href="#6-1分类" class="headerlink" title="6.1分类"></a>6.1分类</h2><p>　　　是/否，可以有两个取值的变量<br>　　　$$y\in\left\{0,1\right\}$$<br>　　　0: 负类”Negative Class”(e.g., benign tumor)<br>　　　1: 正类”Positive Class”(e.g., malignant tumor)<br>　　　如果y取值多的叫多分类</p>
+        <p>吴恩达机器学习-Day_5</p>
+<a id="more"></a>
+
+<h2 id="6-1分类"><a href="#6-1分类" class="headerlink" title="6.1分类"></a>6.1分类</h2><p>　　　是/否，可以有两个取值的变量<br>　　　$$y\in\left\{0,1\right\}$$<br>　　　0: 负类”Negative Class”(e.g., benign tumor)<br>　　　1: 正类”Positive Class”(e.g., malignant tumor)<br>　　　如果y取值多的叫多分类</p>
 <p>　　　<img src="/2020/03/04/MLD5/6-1_P1.png" alt="pic"><br>　　　如果和线性回归一样设假设函数，设置阈值为0.5，即如果假设函数值等于阈值时，对应的横坐标左侧的函数值都视为0，反之视为1.<br>　　　但是这种方法在有极端数据之后，假设函数在图像上的斜率变小，从而当函数值等于阈值时，有很多呈阳性的肿瘤被判断成阴性（在阈值对应的横坐标的左侧），从而造成错误的预测。所以线性回归不适合运用在分类问题。<br>　　　而且使用线性回归时，假设函数值可能会远大于1或者远小于0，这显得很奇怪。<br>　　　（个人感觉并不奇怪，因为有设定一个阈值，关键问题在于线性回归会受到偏于优势的数据的影响，类如上面那个例子，设肿瘤体积小于2为分类标准，如果数据点集中在小于2的部分，则会斜率增加，把原本属于阴性的误判为阳性的，同理对阳性也是如此）</p>
 <p>　　　<strong>逻辑回归Logistic Regression</strong>可以保证加黑色函数值能够保持在[0,1]</p>
 <h2 id="6-2假设陈述"><a href="#6-2假设陈述" class="headerlink" title="6-2假设陈述"></a>6-2假设陈述</h2><p>　　　原来的线性回归方程假设为$h_\theta\left(x\right) = \theta^Tx$<br>那么逻辑方程就令$$h_\theta\left(x\right) = g(\theta^Tx)$$<br>$$g(z) = \frac{1}{1+e^{-z}}$$<br>　　　<strong>Sigmoid function = Logistic function</strong>都指代g函数<br>$$h_\theta\left(x\right) = \frac{1}{1+e^{-\theta^Tx}}$$<br>　　　<img src="/2020/03/04/MLD5/6-1_P2.png" alt="pic"><br>　　　假设函数的图像大约如上图所示。</p>
 <p>　　　在逻辑回归方程里的假设函数$h_\theta\left(x\right)$表示估计当x取某值时y=1的概率。<br>　　　即概率论里的条件概率，也可以写为$P\left(y=0|x;\theta\right)$</p>
-<h2 id="6-3决策界限"><a href="#6-3决策界限" class="headerlink" title="6-3决策界限"></a>6-3决策界限</h2><p>　　　决策界限decision boundary: </p>
+<h2 id="6-3决策界限"><a href="#6-3决策界限" class="headerlink" title="6-3决策界限"></a>6-3决策界限</h2><h3 id="线性决策界限"><a href="#线性决策界限" class="headerlink" title="线性决策界限"></a>线性决策界限</h3><p>　　　<img src="/2020/03/04/MLD5/6-3_P1.png" alt="pic"><br>　　　决策界限decision boundary: 假设函数对应的直线，按照其函数值小于/大于阈值将图像分成两个部分就像分界线一样(如图中红色线)。<br>　　　<strong>决策界限不是训练集的属性，而是假设函数的属性。</strong></p>
+<h3 id="非线性决策界限"><a href="#非线性决策界限" class="headerlink" title="非线性决策界限"></a>非线性决策界限</h3><p>　　　<img src="/2020/03/04/MLD5/6-3_P2.png" alt="pic"><br>　　　其实就像回归方程，除了要找出合适的参数theta，还要找到合适的多项式方程。</p>
+<h2 id="6-4代价函数"><a href="#6-4代价函数" class="headerlink" title="6-4代价函数"></a>6-4代价函数</h2><p>　　　<img src="/2020/03/04/MLD5/6-4_P1.png" alt="pic"><br>　　　在logicstic回归的代价函数和线性回归的代价函数不同，原因在于逻辑回归的假设函数时非线性的，会导致代价函数有多个局部最小值。<br>　　　在逻辑回归的代价函数将被写为<br>$$J\left(\theta\right)=\frac{1}{m}\sum_{i=1}^{m}{Cost\left(h_\theta\left(x\right),y\right)}$$<br>　　　<img src="/2020/03/04/MLD5/6-4_P2.png" alt="pic"><br>　　　<img src="/2020/03/04/MLD5/6-4_P3.png" alt="pic"><br>　　　对y=1来说，如果假设函数值为1，那么cost为0，而假设函数越趋于0，则代价越高，即如果我们计算得到假设函数值为0，而y却为1，则我们用一个很大的代价”惩罚”这个学习算法。</p>
+<h2 id="6-5简化代价函数和梯度下降"><a href="#6-5简化代价函数和梯度下降" class="headerlink" title="6-5简化代价函数和梯度下降"></a>6-5简化代价函数和梯度下降</h2><p>　　　上面提到的代价函数需要分为y=0和y=1的情况，但是可以再简化为<br>　　　<img src="/2020/03/04/MLD5/6-5_P1.png" alt="pic"><br>　　　似乎可以采用其它代价函数，但是这种形式是从极大似然法maximum likelihood estimation得来的。<br>　　　<img src="/2020/03/04/MLD5/6-5_P2.png" alt="pic"></p>
+<h2 id="6-6高级优化"><a href="#6-6高级优化" class="headerlink" title="6-6高级优化"></a>6-6高级优化</h2><p>　　　优化算法：<strong>Conjugate  gradient, BFGS, L-BFGS</strong><br>　　　优点：不需要认为选择学习率，算法内部的智能内循环(线搜索算法);常常快于梯度下降算法。<br>　　　缺点：太复杂。<br>　　　<img src="/2020/03/04/MLD5/6-6_P1.png" alt="调用优化算法"></p>
+<h2 id="6-7多元分类：一对多"><a href="#6-7多元分类：一对多" class="headerlink" title="6-7多元分类：一对多"></a>6-7多元分类：一对多</h2><p>　　　<img src="/2020/03/04/MLD5/6-7_P1.png" alt="pic"><br>　　　需要n个分类器来分出n个种类，每个分类器可以分出代价最小的种群。（有个疑问：会不会有某个或多个样本同时处在多个类中？）</p>
 
       
 
