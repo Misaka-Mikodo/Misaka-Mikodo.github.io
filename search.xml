@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ML_ex1</title>
+    <url>/2020/03/03/ML-ex1/</url>
+    <content><![CDATA[<p>吴恩达机器学习习题ex1解答<br>原题可以在这里找到，需要用邮箱注册，不需要翻墙<br><a href="https://www.coursera.org/learn/machine-learning/home/welcome" target="_blank" rel="noopener">coursera学习网站，类似中国的mooc</a></p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>　　　这个网站最多只能用来做做题还有看看课程资料了，课程视频是看不了的，估计被墙了……虽然官网有中文，但是所有的课程资料都是英文……<br>　　　在学习到单变量线性回归方程的时候会有一个编程作业，下载一个zip文件，里面有作业介绍ex1.pdf,还有作业文件，作业包含必做题和选做题，必做题考察基础的工具操作和单变量线性回归方程，选做题涉及特征缩放，多变量线性回归方程，正规化。只要做完必做题就满分了。<br>　　　至于作业介绍ex1.pdf花了我将近一个小时才看懂操作方式……首先要把文件解压，然后把路径调整到这个文件夹下，我用的是matlab可以通过UI界面进入，命令行的话要通过cd命令跳转过去。<br>　　　<img src="/2020/03/03/ML-ex1/ex1_P1.png" alt="pic"><br>$$<br>\begin{array}{l|r}<br>{文件名}&amp;{功能}\\<br>\hline<br>{ex1.m}&amp;{必做题的运行脚本}\\<br>{ex1_multi.m}&amp;{选做题的运行脚本}\\<br>{submit.m}&amp;{提交的运行脚本}\\<br>{下面的文件}&amp;{星号是必做题，加号是选做题}\\<br>\end{array}<br>$$</p>
+<h2 id="必做题"><a href="#必做题" class="headerlink" title="必做题"></a>必做题</h2><p>　　　首先先要根据注释的instruction写出必做题中的代码。<br>　　　第一题，是输出一个5*5的单位矩阵。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">A = <span class="built_in">eye</span>(<span class="number">5</span>)</span></pre></td></tr></table></figure>
+
+<p>　　　第二题，是将数据点显示在图上。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">'rx'</span>, <span class="string">'MarkerSize'</span>, <span class="number">10</span>);  </span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment">% rx表示用红色x来画出数据点，MarkSize设置大小</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment">% 如果没有rx的话所有数据点会连一起而不是单独画出</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">xlabel(<span class="string">'Population of City in 10,000s'</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">ylabel(<span class="string">'Profit in $10,000s'</span>);</span></pre></td></tr></table></figure>
+
+<p>　　　第三题，计算代价函数和梯度下降<br>　　　代价函数的公式$ \mathtt{J} \left( θ_0,θ_1x \right) = \frac {1}{2m} \sum_{i=1}^m {\left( h_θ \left( x^{i} \right ) -y \right)} ^2 $</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">J = sum((X * theta - y).^<span class="number">2</span>) / (<span class="number">2</span>*m);</span></pre></td></tr></table></figure>
+
+<p>　　　这边要注意两个东西，一个是theta是行向量，而之前说的$\theta^Tx$是theta是列向量才需要翻转。那么根据矩阵相乘的知识，要么用 theta.<em>X,要么用X</em>theta，两者都是为了生成97*1的向量来跟y相减，最后这个平方号要注意是向量内的每一个元素平方，而不是向量乘向量。</p>
+<p>　　　梯度下降的公式<br>　　　$ θ_0 := θ_0 - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}^2 $<br>　  $ θ_0 := θ_0 - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}^2 \dot x^{\left(i\right)}$ </p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">theta_s = theta;</span></pre></td></tr><tr><td class="code"><pre><span class="line">theta_s(<span class="number">1</span>) = theta(<span class="number">1</span>) - alpha / m * sum(X * theta - y);</span></pre></td></tr><tr><td class="code"><pre><span class="line">theta_s(<span class="number">2</span>) = theta(<span class="number">2</span>) - alpha / m * sum((X * theta - y) .* X(:,<span class="number">2</span>));</span></pre></td></tr><tr><td class="code"><pre><span class="line">theta=theta_s;</span></pre></td></tr></table></figure>
+
+<p>　　　注意$\theta_0和\theta_1$是同步更新的，所以设置了一个暂存量theta_s.</p>
+<p>　　　第四题是代价函数的可视化，不需要额外填写代码。</p>
+<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><p>　　　在对应的文件完成代码之后，在命令行窗口输入ex1看看是否正确运行，运行的结果可以和ex1.pdf进行比较，若结果正确，则在命令行窗口输入submit提交，输入邮箱和识别码(在coursera的作业界面领取)，即可提交并打分，并且将结果上传，凡是写nice work!的都是表示结果正确。</p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MLD4</title>
+    <url>/2020/03/03/MLD4/</url>
+    <content><![CDATA[<p>吴恩达机器学习笔记第四天</p>
+<a id="more"></a>
+<h2 id="5-1基本操作"><a href="#5-1基本操作" class="headerlink" title="5.1基本操作"></a>5.1基本操作</h2><p>　　　由于原视频使用的是Octave,然后我自己有现成的matlab能用，根据实践发现两者操作是共通的。</p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>　　　基本数学操作（加减乘除），<strong>不等于号是~=</strong>,逻辑运算。<br>　　　用分号可以阻止输出。还有用经典的C语言<strong>注意是sprintf</strong>控制输出格式。<br>　　　format long\short 输出默认的长\短位。</p>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>　　　A = [1 2;3 4;5 6]可以生成如下的矩阵<br>$$<br>\begin{bmatrix}<br>1&amp;2\\\<br>3&amp;4\\\<br>5&amp;6<br>\end{bmatrix}<br>$$<br>　　　v = [1 2 3]生成行向量     [1; 2; 3]生成列向量<br>　　　v = 1:0.1:2 生成一个行向量，范围[1, 2], 间隔为0.1<br>　　　当然 [1 2 3] 也可以用类如 1:6 来代替（默认间隔为1）</p>
+<p>　　　ones(x, y) 生成x行y列，元素为1的矩阵<br>　　　zeros(x, y) 生成x行y列，元素为0的矩阵<br>　　　rand(x, y) 生成x行y列，元素为（0，1）随机数的矩阵<br>　　　randn(x, y) 生成x行y列，元素为满足高斯分布的随机数的矩阵<br>　　　eye(x) 画出x行x列的单位矩阵</p>
+<p>　　　hist(x) 画出x的分布直方图</p>
+<h2 id="5-2移动数据"><a href="#5-2移动数据" class="headerlink" title="5.2移动数据"></a>5.2移动数据</h2><p>　　　size(A) 返回矩阵A的大小<br>　　　size(A, 1) 返回第一维度的大小（即行数）<br>　　　size(A, 2) 返回第二维度的大小（即列数）<br>　　　length(v) 返回向量v的大小<br>　　　length(A) 返回矩阵A的行数</p>
+<p>　　　load xxx 表示读取xxx文件<br>　　　save xxx y 表示把数据y存入xxx文件中<br>　　　在后面加入 -ascii 可以让它用二进制的方式储存</p>
+<p>　　　A(3,2) 表示第三行第二列的元素<br>　　　A(2,:) :表示取该维度所有值，这表示取了第二行的所有值<br>　　　A([1 3], :) 表示去了第1、3行的所有值<br>　　　A = [A, [100; 101; 102]] 在A的右边添加一列<br>　　　A(:) 标A的所有值放入一个列向量</p>
+<h2 id="5-3计算数据"><a href="#5-3计算数据" class="headerlink" title="5.3计算数据"></a>5.3计算数据</h2><p>　　　A<em>B表示矩阵相乘， A.</em>B表示矩阵内的元素相乘<br>　　　两个区别是，矩阵相乘要第一个矩阵的列数等于第二个矩阵的行数<br>　　　而元素相乘要保证矩阵大小相同</p>
+<p>　　　A’: 求矩阵A的转置<br>　　　max(A): 返回A每一行内最大的数和index索引<br>　　　a &lt; 3: 类似这种的条件语句，返回一个bool矩阵返回每个元素&lt;3的结果<br>　　　find(a &lt; 3): 和上面相同，一个是返回boo值，一个是返回元素值<br>　　　magic(A): 幻方，返回行列斜线的和相同的矩阵
+　　　
+　　　</p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习-Day_2&amp;Day_3</title>
     <url>/2020/03/01/MLD2/</url>
     <content><![CDATA[<p>吴恩达机器学习笔记D2&amp;D3</p>
@@ -13,7 +62,7 @@
 <h3 id="Hypothesis"><a href="#Hypothesis" class="headerlink" title="Hypothesis"></a>Hypothesis</h3><p>　　　过去是单变量的线性回归，随着特征量的增加，需要对假设函数修改<br>　　　$$h_{\theta}\left(x\right) = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3$$<br>　　　这里的x0的取值默认取1，之所以这么取是可能是为了向量的纬度对齐。<br>　　　于是便可以写成如下形式<br>$$<br>x =<br>\begin{bmatrix}<br>x_0\\\<br>x_1\\\<br>x_2\\\<br>\vdots \\\<br>x_n<br>\end{bmatrix}<br><br>\theta =<br>\begin{bmatrix}<br>\theta_0\\\<br>\theta_1\\\<br>\theta_2\\\<br>\vdots\\\<br>\theta_n<br>\end{bmatrix}<br>$$<br>$$ h_{\theta}\left(x\right) = \theta^Tx$$<br>　　　这里要注意内外积的区别，因为结果是一个标量而不是一个矩阵，所以是前面的theta转置。</p>
 <h2 id="4-2多元梯度下降法"><a href="#4-2多元梯度下降法" class="headerlink" title="4.2多元梯度下降法"></a>4.2多元梯度下降法</h2><p>　　　假设函数: $h_{\theta}\left(x\right) = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3$<br>　　　参数: $\theta_0,\theta_1,\cdots,\theta_n$<br>　　　代价函数:<br>$$J\left(\theta_0,\theta_1,\cdots,\theta_n\right)=\frac {1}{2m} \sum_{i=1}^m {\left( h_θ \left( x^{i} \right) -y \right)} ^2$$<br>　　　梯度下降<br>　　　$θ_j := θ_0 - α\frac{∂}{∂θ_j}J\left(\theta_0,\theta_1,\cdots,\theta_n\right)$<br>　　　<img src="/2020/03/01/MLD2/4-2_P1.png" alt="pic"><br>　　　常数项1声明为了$x_0$，所以$\theta_0$的情况也包含了进去。</p>
 <h2 id="4-3特征缩放"><a href="#4-3特征缩放" class="headerlink" title="4.3特征缩放"></a>4.3特征缩放</h2><h3 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h3><p>　　　特征缩放Feature Scaling: make sure feature are on a similar scale.<br>　　　<img src="/2020/03/01/MLD2/4-3_P1.png" alt="pic"><br>　　　由于卧室数量和房子面积比例为400:1, 所以会导致在画代价函数图像的时候画出的椭圆太扁平。为了方便收敛，采取右边的对特征量进行缩放的方法。<br>　　　看弹幕提到一个问题，这个椭圆是竖着还是躺着，原图这么画是没错的，因为x1的范围相对于x2较大，所以导致$\theta_1$稍微变化一点，代价函数的值就会有更大的变化，这就是为什么在$\theta_1$轴上，等高线如此密集的原因。<br>　　　方法：尽量让所有的特征大致收缩在[-1,1]的范围之间，当然像[0,2]这样相对较小的也可以。</p>
-<h3 id="均值归一化"><a href="#均值归一化" class="headerlink" title="均值归一化"></a>均值归一化</h3><p>　　　均值归一化Mean normalization: Replace $x_i with x_i-/mu_i to make features have approximately zero mean$.(Don`t apply to $x_0$ = 1)<br>　　　上面这些是为了把特征值$x_i = \frac{x_i-\mu_i}{S_i}$<br>　　　$\mu_i$表示平均值，而$S_i$可以用样本集的方差或者极差(最大值减最小值)。<br>　　　以上的特征缩放是为了减少迭代次数，加快梯度下降的速度。</p>
+<h3 id="均值归一化"><a href="#均值归一化" class="headerlink" title="均值归一化"></a>均值归一化</h3><p>　　　均值归一化Mean normalization: Replace $x_i$ with $x_i-/mu_i$ to make features have approximately zero mean.(Don`t apply to $x_0$ = 1)<br>　　　上面这些是为了把特征值$x_i = \frac{x_i-\mu_i}{S_i}$<br>　　　$\mu_i$表示平均值，而$S_i$可以用样本集的方差或者极差(最大值减最小值)。<br>　　　以上的特征缩放是为了减少迭代次数，加快梯度下降的速度。</p>
 <h2 id="4-4学习率"><a href="#4-4学习率" class="headerlink" title="4.4学习率"></a>4.4学习率</h2><p>　　　两个目标:<br>　　　1.”Debugging”: 如何保证梯度下降正常工作<br>　　　2.如何选择学习率α</p>
 <h3 id="判断梯度下降正常工作"><a href="#判断梯度下降正常工作" class="headerlink" title="判断梯度下降正常工作"></a>判断梯度下降正常工作</h3><p>　　　<img src="/2020/03/01/MLD2/4-4_P1.png" alt="pic"><br>　　　画出最小代价函数值随着迭代次数变化的曲线图。随着迭代次数的上升代价函数逐渐收敛到一个最小值。</p>
 <h3 id="自动收敛测试"><a href="#自动收敛测试" class="headerlink" title="自动收敛测试"></a>自动收敛测试</h3><p>　　　automatic convergence test自动收敛测试: 如果在一次迭代中，J(θ)小于某个很小的数(如1e-3)，则视为函数已收敛。<br>　　　但是这个阈值时很难确定的，所以从上面的曲线图判断是否收敛比较好。</p>
