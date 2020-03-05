@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>机器学习_Day6</title>
+    <url>/2020/03/05/MLD6/</url>
+    <content><![CDATA[<p>吴恩达机器学习-Day_6</p>
+<a id="more"></a>
+
+<h2 id="7-1过拟合问题"><a href="#7-1过拟合问题" class="headerlink" title="7-1过拟合问题"></a>7-1过拟合问题</h2><p>　　　过拟合问题<em>the overfitting problem</em>: 函数模型符合已知数据点但无法用于处理未知问题，简单说就是有特殊性但是没有普遍性。<br>　　　正则化<em>regularizatoin</em>: 改善和减少过度拟合。</p>
+<h3 id="过拟合问题"><a href="#过拟合问题" class="headerlink" title="过拟合问题"></a>过拟合问题</h3><p>　　　<img src="/2020/03/05/MLD6/7-1_P1.png" alt="pic"><br>　　　左边: 欠拟合<em>underfit</em>, 高偏差<em>high bias</em>.<br>　　　右边：过拟合<em>overfit</em>, 高方差<em>high Variance</em>.<br>　　　泛化generalize: 对一般化的数据也同样适用。<br>　　　<img src="/2020/03/05/MLD6/7-1_P2.png" alt="pic"></p>
+<h3 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h3><p>　　　1.减少特征数量<br>　　　　　　-人工选择重要的特征<br>　　　　　　-模型选择算法(后面提到)<br>　　　2.正则化<br>　　　　　　-保留所有的特征，但减少量级magnitude或者参数theta的大小<br>　　　　　　-在有很多特征的情况下工作较好，每个特征会为预测y提供一点帮助。</p>
+<h2 id="7-2代价函数"><a href="#7-2代价函数" class="headerlink" title="7-2代价函数"></a>7-2代价函数</h2><p>　　　<img src="/2020/03/05/MLD6/7-2_P1.png" alt="pic"><br>　　　对部分参数加入惩罚项，在图中所示，给后面两个参数增加惩罚项减少其对假设函数的影响，使函数更趋近于二次函数。</p>
+<p>　　正规化:<br>　　　减少参数theta的值<br>　　　　　　-简化假设函数<br>　　　　　　-防止发生过拟合<br>　　　在代价函数加入惩罚项<br>　　　<img src="/2020/03/05/MLD6/7-2_P1.png" alt="pic"><br>　　　代价函数 $$J\left(\theta\right) = \frac{1}{2m} \left[\sum_{i=1}^m{\left(h_\theta\left(x^{\left(i\right)}\right)-y^{\left(i\right)}\right)}^2 +\lambda \sum_{j=1}^n{\theta_j^2}\right]$$<br>　　　注意后面的惩罚项是从j=1开始，不包含$\theta_0$。其中$\lambda$叫做正规化系数，如果正规化系数过大会导致”惩罚”过重，最后假设函数收敛到一条和x轴平行的直线y = $\theta_0$。</p>
+<h2 id="7-3线性回归的正则化"><a href="#7-3线性回归的正则化" class="headerlink" title="7-3线性回归的正则化"></a>7-3线性回归的正则化</h2><p>　　　梯度下降<br>$$ θ_0 := θ_0 - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}x_0^{\left(i\right)} $$<br>$$θ_j := θ_j - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}x^{\left(i\right)}  + \frac{\lambda}{m}\theta_j$$<br>　　　上面的式子也可以写成<br>$$θ_j := θ_j\left(1-\alpha\frac{\lambda}{m}\right) - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}x^{\left(i\right)}$$<br>　　　其中由于$\alpha$的值很小，所以$θ_j\left(1-\alpha\frac{\lambda}{m}\right)$的值解仅1。<br>　　　<img src="/2020/03/05/MLD6/7-3_P1.png" alt="pic"><br>　　　如果样本数小于特征数，则会导致矩阵退化（即不可逆矩阵）<br>　　　PS: 这个方程使用过代价函数对theta求导后结果为0推出。</p>
+<h2 id="7-4逻辑回归的正则化"><a href="#7-4逻辑回归的正则化" class="headerlink" title="7-4逻辑回归的正则化"></a>7-4逻辑回归的正则化</h2><p>　　　加入正则化项的逻辑回归模型的代价函数<br>　　　<img src="/2020/03/05/MLD6/7-4_P1.png" alt="pic"><br>　　　代价函数即为原来的代价函数加上正则化项$\frac{\lambda}{2m}\sum_{j=1}^n{\theta_j^2}$<br>　　　加入正则化项的逻辑回归模型的梯度下降<br>　　　<img src="/2020/03/05/MLD6/7-4_P2.png" alt="pic"><br>　　　弹幕里有人提到为什么后面的theta不用累加的问题，因为每次都是对$theta_j$求偏导，其它下标不是j的在求导的时候就变成0了，所以不是和代价函数一样求和。</p>
+<h3 id="高级优化"><a href="#高级优化" class="headerlink" title="高级优化"></a>高级优化</h3><p>　　　<img src="/2020/03/05/MLD6/7-4_P3.png" alt="pic"><br>　　　这节课后面再coursera有个练习==，有时间再做吧</p>
+<h2 id="8-1非线性假设"><a href="#8-1非线性假设" class="headerlink" title="8-1非线性假设"></a>8-1非线性假设</h2><p>　　　<img src="/2020/03/05/MLD6/8-1_P1.png" alt="pic"><br>　　　如果特征数量过多，便会导致产生的多项式项数过多，会发生过拟合，但是如果通过减少次数来减少项数又会减少相关项导致曲线欠拟合。<br>　　　由于计算机看到的只是代表亮度的矩阵，那么为了使计算机有识别能力，需要向学习算法提供车和非车的样本集，以下是原理示例。<br>　　　在车上取某两个位置的像素点，根据亮度值标注在图上，车和非车也同样如此处理，如下图所示：<br>　　　<img src="/2020/03/05/MLD6/8-1_P2.png" alt="pic"></p>
+<h2 id="8-2神经元和大脑"><a href="#8-2神经元和大脑" class="headerlink" title="8-2神经元和大脑"></a>8-2神经元和大脑</h2><p>　　　神经网络<em>neural networks</em>起源: 尝试去模拟人的大脑的算法。<br>　　　盛行于80年代和90年代早期，但是没落与90年代末，由于计算速度提高在近阶段兴盛。<br>　　　生理学上的证据：切断耳朵和大脑上听觉中枢的神经，接上眼睛后这个大脑区域拥有看的能力。（神经重连实验）</p>
+<h2 id="8-3模型展示"><a href="#8-3模型展示" class="headerlink" title="8-3模型展示"></a>8-3模型展示</h2><p>　　　人类是通过神经元进行信息传递。<br>　　　所以在计算机里面，神经网络将逻辑单元当做神经元。<br>　　　Sigmoid(logistic) 激活函数<em>actication funciont</em>。<br>　　　theta参数在某些文献里面也会被叫做权重<em>weight</em><br>　　　可能会有偏置单元<em>bias unit</em>.<br>　　　在神经网络中，第一层也叫作输入层<em>input layer</em>,最后一层叫做输出层<em>output layer</em>, 中间的叫做隐藏层<em>hidden layer</em>.<br>　　　<img src="/2020/03/05/MLD6/8-3_P1.png" alt="pic"><br>　　　$a_i^{\left(j\right)}$=第j层的第i个激活项<br>　　　$\theta^{\left(j\right)}$=权重矩阵控制从j层到j+1等的映射函数。<br>　　　<img src="/2020/03/05/MLD6/8-3_P2.png" alt="pic"></p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习-Day_5</title>
     <url>/2020/03/04/MLD5/</url>
     <content><![CDATA[<p>吴恩达机器学习-Day_5</p>
