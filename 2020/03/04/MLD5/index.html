@@ -165,7 +165,8 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MLD5" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MLD5" class="article article-type-post 
+" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -348,23 +349,27 @@
   
 
   
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yoursite.com/2020/03/04/MLD5/",
-  owner: 'Misaka-Mikodo',
-  repo: 'misaka-mikodo.github.io',
-  oauth: {
-    client_id: '821bdee60920f7959cbd',
-    client_secret: 'baaa2db1e65daa2c78f9176594f5ecbfd87475ae',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
 
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '821bdee60920f7959cbd',
+  	clientSecret: 'baaa2db1e65daa2c78f9176594f5ecbfd87475ae',
+  	repo: 'misaka-mikodo.github.io',
+  	owner: 'Misaka-Mikodo',
+  	admin: ['Misaka-Mikodo'],
+  	id: 'Wed Mar 04 2020 13:54:16 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container')
+}
+</script>
+
+  
 
           </div>
         </div>

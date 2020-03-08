@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>MLD7</title>
+    <title>机器学习_Day7</title>
     <url>/2020/03/06/MLD7/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="8-4模型展示"><a href="#8-4模型展示" class="headerlink" title="8-4模型展示"></a>8-4模型展示</h2><p>　　　前向传播的神经网络。方程的向量化表示。<br>　　　<img src="/2020/03/06/MLD7/8-4_P1.png" alt="pic"><br>　　　注意这里的$z^{\left(2\right)}=\Theta^{\left(1\right)}a^{\left(1\right)}$ 是把x也看成了a，然后在计算之后需要给各个层加偏置项，即下标为0的那一项。</p>
+<p>　　　<img src="/2020/03/06/MLD7/8-4_P2.png" alt="pic"><br>　　　这一步是从隐藏层推出输出层，这一步和逻辑回归的假设函数相似，这不过区别在于标记Theta，且输入的特征是来自于隐藏层，而不是原本数据的特征。<br>　　　即没有使用样本的特征，而是用训练出来的逻辑回归的结果作为特征。</p>
+<p>　　　其它的神经网络的结构，不止上面的三层结构，可能有多个隐藏层。</p>
+<h2 id="8-5例子和直觉理解"><a href="#8-5例子和直觉理解" class="headerlink" title="8-5例子和直觉理解"></a>8-5例子和直觉理解</h2><p>　　　<img src="/2020/03/06/MLD7/8-5_P1.png" alt="pic"><br>　　　神经网络运用在与门上，加入一个偏置单元。Theta的值是由教授本身提供。g(4.6)的值接近0.99<br>　　　这些例子只有两层，还是算比较入门的神经网络</p>
+<h2 id="8-6例子和直觉理解"><a href="#8-6例子和直觉理解" class="headerlink" title="8-6例子和直觉理解"></a>8-6例子和直觉理解</h2><p>　　　<img src="/2020/03/06/MLD7/8-6_P1.png" alt="pic"><br>　　　神经网络算出非门的假设函数</p>
+<p>　　　加下来是比较复杂的<br>　　　<img src="/2020/03/06/MLD7/8-6_P2.png" alt="pic"><br>　　　这一步相当于 $(x_1 AND x_2) OR (NOT x_1 AND NOT x_2) = x_1 XNOR x_2$<br>　　　有点像逻辑的相互叠加。</p>
+<h2 id="8-7多元分类"><a href="#8-7多元分类" class="headerlink" title="8-7多元分类"></a>8-7多元分类</h2><p>　　　<img src="/2020/03/06/MLD7/8-6_P1.png" alt="pic"></p>
+<h2 id="9-1代价函数"><a href="#9-1代价函数" class="headerlink" title="9-1代价函数"></a>9-1代价函数</h2><p>　　　<img src="/2020/03/06/MLD7/9-1_P1.png" alt="pic"><br>　　　L: 在神经网络里层次数量<br>　　　$s_l$: 在层次l里有几个单元</p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
   </entry>
   <entry>
     <title>机器学习_Day6</title>

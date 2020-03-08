@@ -6,17 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>MLD7 | Misaka-Mikodo</title>
+  <title>机器学习_Day7 | Misaka-Mikodo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="My Secret Base">
+  <meta name="description" content="8-4模型展示　　　前向传播的神经网络。方程的向量化表示。　　　　　　注意这里的$z^{\left(2\right)}&#x3D;\Theta^{\left(1\right)}a^{\left(1\right)}$ 是把x也看成了a，然后在计算之后需要给各个层加偏置项，即下标为0的那一项。 　　　　　　这一步是从隐藏层推出输出层，这一步和逻辑回归的假设函数相似，这不过区别在于标记Theta，且输入的特征是来">
+<meta name="keywords" content="&#x2F;machineLearning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MLD7">
+<meta property="og:title" content="机器学习_Day7">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;MLD7&#x2F;index.html">
 <meta property="og:site_name" content="Misaka-Mikodo">
-<meta property="og:description" content="My Secret Base">
+<meta property="og:description" content="8-4模型展示　　　前向传播的神经网络。方程的向量化表示。　　　　　　注意这里的$z^{\left(2\right)}&#x3D;\Theta^{\left(1\right)}a^{\left(1\right)}$ 是把x也看成了a，然后在计算之后需要给各个层加偏置项，即下标为0的那一项。 　　　　　　这一步是从隐藏层推出输出层，这一步和逻辑回归的假设函数相似，这不过区别在于标记Theta，且输入的特征是来">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-06T02:15:52.098Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;MLD7&#x2F;8-4_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;MLD7&#x2F;8-4_P2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;MLD7&#x2F;8-5_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;MLD7&#x2F;8-6_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;MLD7&#x2F;8-6_P2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;MLD7&#x2F;8-6_P1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;MLD7&#x2F;9-1_P1.png">
+<meta property="og:updated_time" content="2020-03-07T15:53:47.018Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;06&#x2F;MLD7&#x2F;8-4_P1.png">
   
     <link rel="alternative" href="/atom.xml" title="Misaka-Mikodo" type="application/atom+xml">
   
@@ -152,14 +161,15 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MLD7" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MLD7" class="article article-type-post 
+" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      MLD7
+      机器学习_Day7
     </h1>
   
 
@@ -172,7 +182,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="8-4模型展示"><a href="#8-4模型展示" class="headerlink" title="8-4模型展示"></a>8-4模型展示</h2><p>　　　前向传播的神经网络。方程的向量化表示。<br>　　　<img src="/2020/03/06/MLD7/8-4_P1.png" alt="pic"><br>　　　注意这里的$z^{\left(2\right)}=\Theta^{\left(1\right)}a^{\left(1\right)}$ 是把x也看成了a，然后在计算之后需要给各个层加偏置项，即下标为0的那一项。</p>
+<p>　　　<img src="/2020/03/06/MLD7/8-4_P2.png" alt="pic"><br>　　　这一步是从隐藏层推出输出层，这一步和逻辑回归的假设函数相似，这不过区别在于标记Theta，且输入的特征是来自于隐藏层，而不是原本数据的特征。<br>　　　即没有使用样本的特征，而是用训练出来的逻辑回归的结果作为特征。</p>
+<p>　　　其它的神经网络的结构，不止上面的三层结构，可能有多个隐藏层。</p>
+<h2 id="8-5例子和直觉理解"><a href="#8-5例子和直觉理解" class="headerlink" title="8-5例子和直觉理解"></a>8-5例子和直觉理解</h2><p>　　　<img src="/2020/03/06/MLD7/8-5_P1.png" alt="pic"><br>　　　神经网络运用在与门上，加入一个偏置单元。Theta的值是由教授本身提供。g(4.6)的值接近0.99<br>　　　这些例子只有两层，还是算比较入门的神经网络</p>
+<h2 id="8-6例子和直觉理解"><a href="#8-6例子和直觉理解" class="headerlink" title="8-6例子和直觉理解"></a>8-6例子和直觉理解</h2><p>　　　<img src="/2020/03/06/MLD7/8-6_P1.png" alt="pic"><br>　　　神经网络算出非门的假设函数</p>
+<p>　　　加下来是比较复杂的<br>　　　<img src="/2020/03/06/MLD7/8-6_P2.png" alt="pic"><br>　　　这一步相当于 $(x_1 AND x_2) OR (NOT x_1 AND NOT x_2) = x_1 XNOR x_2$<br>　　　有点像逻辑的相互叠加。</p>
+<h2 id="8-7多元分类"><a href="#8-7多元分类" class="headerlink" title="8-7多元分类"></a>8-7多元分类</h2><p>　　　<img src="/2020/03/06/MLD7/8-6_P1.png" alt="pic"></p>
+<h2 id="9-1代价函数"><a href="#9-1代价函数" class="headerlink" title="9-1代价函数"></a>9-1代价函数</h2><p>　　　<img src="/2020/03/06/MLD7/9-1_P1.png" alt="pic"><br>　　　L: 在神经网络里层次数量<br>　　　$s_l$: 在层次l里有几个单元</p>
+
       
 
       
@@ -201,6 +219,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">/machineLearning</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -301,23 +330,27 @@
   
 
   
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yoursite.com/2020/03/06/MLD7/",
-  owner: 'Misaka-Mikodo',
-  repo: 'misaka-mikodo.github.io',
-  oauth: {
-    client_id: '821bdee60920f7959cbd',
-    client_secret: 'baaa2db1e65daa2c78f9176594f5ecbfd87475ae',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
 
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '821bdee60920f7959cbd',
+  	clientSecret: 'baaa2db1e65daa2c78f9176594f5ecbfd87475ae',
+  	repo: 'misaka-mikodo.github.io',
+  	owner: 'Misaka-Mikodo',
+  	admin: ['Misaka-Mikodo'],
+  	id: 'Fri Mar 06 2020 10:15:52 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container')
+}
+</script>
+
+  
 
           </div>
         </div>
