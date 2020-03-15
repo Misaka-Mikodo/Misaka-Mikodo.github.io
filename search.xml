@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>机器学习-Day_10</title>
+    <url>/2020/03/15/MLD10/</url>
+    <content><![CDATA[<p>吴恩达机器学习-Day_10</p>
+<a id="more"></a>
+
+<h2 id="12-3大间距分类器的数学原理"><a href="#12-3大间距分类器的数学原理" class="headerlink" title="12-3大间距分类器的数学原理"></a>12-3大间距分类器的数学原理</h2><p>　　　向量的内积<br>　　　范数<em>norm</em>(||$\vec m$||):向量的长度<br>　　　<img src="/2020/03/15/MLD10/12-3_P1.png" alt="pic"><br>　　　即两个向量的内积等于u的范数乘上p在向量方向上的投影<br>　　　<img src="/2020/03/15/MLD10/12-3_P2.png" alt="pic"><br>　　　类似上面的内容将$\theta^TX化成p · ||\theta||$<br>　　　<img src="/2020/03/15/MLD10/12-3_P3.png" alt="pic"><br>　　　目标函数是最小化theta，为什么这个公式是这样和以前不同，我觉得是因为支持向量机通过令X*theta大于1和小于-1的方法令前面那部分变成了0，所以只需要考虑后面那部分系数的影响。<br>　　　而为了使theta足够小的同时满足大于1和小于-1的条件，投影p需要足够的大，投影映射到图像上便是所谓的间距，这就是为什么支持向量机能够有大间距的性质。</p>
+<h2 id="12-4核函数"><a href="#12-4核函数" class="headerlink" title="12-4核函数"></a>12-4核函数</h2><p>　　　核函数<em>kernel function</em><br>　　　<img src="/2020/03/15/MLD10/12-4_P1.png" alt="pic"><br>　　　高斯核函数<br>　　　<img src="/2020/03/15/MLD10/12-4_P2.png" alt="pic"><br>　　<br>　　　核函数和相似函数<br>　　　$$f_1 = similarity\left(x,l^{\left(1\right)}\right)=exp\left(-\frac{\sum_{j=1}^n{\left(x_j-l_j^{\left(1\right)}\right)^2}}{2\sigma^2}\right)$$</p>
+<p>　　　如果x约等于$l^{\left(1\right)}$, 则f1会约等于1<br>　　　如果x和$l^{\left(1\right)}$相差很远，那么f1会约等于0</p>
+<p>　　　<img src="/2020/03/15/MLD10/12-4_P3.png" alt="pic"><br>　　　sigma对函数图像的影响</p>
+<p>　　　<img src="/2020/03/15/MLD10/12-4_P4.png" alt="pic"><br>　　　核函数的做法即为，选定几个标记点landmark，则在某些标记点预测值为1的情况下，接近这些标记点的样本预测值便为1，远离则为0.</p>
+<h2 id="12-5核函数-补充"><a href="#12-5核函数-补充" class="headerlink" title="12-5核函数-补充"></a>12-5核函数-补充</h2><p>　　　<img src="/2020/03/15/MLD10/12-5_P1.png" alt="pic"><br>　　　标记点的选取，即把所有的样本点都当成标记点去计算</p>
+<p>　　　<img src="/2020/03/15/MLD10/12-5_P2.png" alt="pic"><br>　　　这边讲解了训练的函数，在某些应用中，在进行正则化的时候会使用$\theta^TM\theta$,这里的M是一个特殊的矩阵，使用这个矩阵来正则化能够加快运算的速度</p>
+<p>　　　在SVM的参数中，有C和sigma，两个参数对函数图像的影响如下<br>　　　<img src="/2020/03/15/MLD10/12-5_P3.png" alt="pic"></p>
+<h2 id="12-6使用SVM"><a href="#12-6使用SVM" class="headerlink" title="12-6使用SVM"></a>12-6使用SVM</h2><p>　　　举例：线性核函数、高斯核函数、多项式核函数、字符串核函数、卡方核函数、直方相交核函数……<br>　　　在使用函数前进行特征归一化<br>　　　使用的核函数需要满足默塞尔定理</p>
+<p>　　　根据样本数和特征数进行选择<br>　　　<img src="/2020/03/15/MLD10/12-6_P1.png" alt="pic"><br>　　　即当特征数小，样本数量适中时，才是用高斯核函数<br>　　　其他情况下，如特征数大，样本数量过小，或者特征数小，样本数量大的时候，通常去使用线性核函数或者线性回归</p>
+<h2 id="13-1无监督学习"><a href="#13-1无监督学习" class="headerlink" title="13-1无监督学习"></a>13-1无监督学习</h2><pre><code>无监督学习*unsupervised learning*: 样本点不提供标签
+簇分配过程*cluster assignment step*</code></pre><h2 id="13-2K-means算法"><a href="#13-2K-means算法" class="headerlink" title="13-2K-means算法"></a>13-2K-means算法</h2><pre><code>聚类中心 cluster centroids</code></pre><p>　　　过程：遍历所有的样本，根据与聚类中心的距离将所有的点分成两类。将两类的点计算均值，再将聚类中心移动到均值处的位置。<br>　　　算法过程如下:<br>　　　<img src="/2020/03/15/MLD10/13-2_P1.png" alt="pic"></p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Orange&#39;s_chapter1</title>
+    <url>/2020/03/12/Orange-s-chapter1/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>KMP算法</title>
+    <url>/2020/03/11/KMP%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[
+<div style="position:relative; width: 100%; height: 0; padding-bottom: 75%"><iframe src="//player.bilibili.com/player.html?aid=49930100&cid=119839716&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"> </iframe></div>
+]]></content>
+      <tags>
+        <tag>/algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习Day_9</title>
+    <url>/2020/03/09/MLD9/</url>
+    <content><![CDATA[<p>吴恩达机器学习day_9</p>
+<a id="more"></a>
+<h2 id="10-2评估假设"><a href="#10-2评估假设" class="headerlink" title="10-2评估假设"></a>10-2评估假设</h2><p>　　　随机分布后按照7：3把数据集分别分成训练集和测试集<br>　　　在训练集中计算参数theta<br>　　　计算测试集误差<br>　　　得到非分类误差<em>Misclassfication error</em>,即测试集代价函数值大于阈值，可是最后实际结果却归为1.</p>
+<h2 id="10-3模型选择和训练、验证测试集"><a href="#10-3模型选择和训练、验证测试集" class="headerlink" title="10-3模型选择和训练、验证测试集"></a>10-3模型选择和训练、验证测试集</h2><h3 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h3><p>　　　设置参数d表示级数，d=1表示最高次数为1.<br>　　　通过每一个不同的d学习出不同的theta，再计算该级数下算出的theta的代价函数值。但是拟合后的最优模型可能是对测试集表现较好，但是对新样本表现可能不一定很好。<br>　　　 解决方法<br>　　　　　　-将样本分为6：2：2，分别为训练集、交叉偏差集cv和测试集<br>　　　<img src="/2020/03/09/MLD9/10-3_P1.png" alt="pic"><br>　　　和之前不同的是，这边用的是交叉测试集去测试参数d选出合适的次数，再用这个d去你和参数。</p>
+<p>　　　使用测试集选出模型，再用同一个测试集拟合参数不是一个好主意。</p>
+<h2 id="10-4诊断偏差和方差"><a href="#10-4诊断偏差和方差" class="headerlink" title="10-4诊断偏差和方差"></a>10-4诊断偏差和方差</h2><p>　　　<img src="/2020/03/09/MLD9/10-4_P1.png" alt="pic"><br>　　　<img src="/2020/03/09/MLD9/10-4_P2.png" alt="pic"><br>　　　　　　如果训练误差和交叉误差都很大，说明是高偏差的欠拟合<br>　　　　　　如果训练误差小而交叉误差大，说明是高方差的过拟合</p>
+<h2 id="10-5正则化的偏差和误差"><a href="#10-5正则化的偏差和误差" class="headerlink" title="10-5正则化的偏差和误差"></a>10-5正则化的偏差和误差</h2><p>　　　找出合适的lambda值<br>　　　　　　这里使用的是翻倍去计算<br>　　　<img src="/2020/03/09/MLD9/10-5_P1.png" alt="pic"><br>　　　<img src="/2020/03/09/MLD9/10-5_P2.png" alt="pic"></p>
+<h2 id="10-6学习曲线"><a href="#10-6学习曲线" class="headerlink" title="10-6学习曲线"></a>10-6学习曲线</h2><h3 id="正常情况"><a href="#正常情况" class="headerlink" title="正常情况"></a>正常情况</h3><p>　　　<img src="/2020/03/09/MLD9/10-6_P1.png" alt="pic"><br>　　　　　　这里的误差是平均误差, 且训练误差最后接近训练集的误差</p>
+<h3 id="高偏差"><a href="#高偏差" class="headerlink" title="高偏差"></a>高偏差</h3><p>　　　<img src="/2020/03/09/MLD9/10-6_P2.png" alt="pic"><br>　　　　　　训练误差最后接近交叉集的误差，不过误差都较高，且更快趋于平缓.即在此之后不管如何增加训练集规模效果都不会增加</p>
+<h3 id="高方差"><a href="#高方差" class="headerlink" title="高方差"></a>高方差</h3><p>　　　<img src="/2020/03/09/MLD9/10-6_P3.png" alt="pic"><br>　　　　　　增加更多数据到训练集可以提高算法效果</p>
+<h2 id="10-7决定接下来做什么"><a href="#10-7决定接下来做什么" class="headerlink" title="10-7决定接下来做什么"></a>10-7决定接下来做什么</h2><p>　　　- 获得更多的训练集  ——解决高方差<br>　　　- 尝试更小的特征  ——解决高方差<br>　　　- 尝试增加额外的特征 ——解决高误差<br>　　　- 尝试增加高级幂的特征 ——解决高误差<br>　　　- 尝试减少正则化系数lambda ——解决高误差<br>　　　- 尝试增加正则化系数lambda ——解决高方差<br>　　　<img src="/2020/03/09/MLD9/10-7_P1.png" alt="pic"></p>
+<h2 id="11-1决定执行的优先级"><a href="#11-1决定执行的优先级" class="headerlink" title="11-1决定执行的优先级"></a>11-1决定执行的优先级</h2><p>　　　例如在邮件分类器里。<br>　　　这里模型的特征是关键词，出现关键词则为1，否则为0.<br>　　　如何减少误差<br>　　　　　　- 收集更多的数据<br>　　　　　　- 基于邮件来源（邮件标题）使用更加复杂的特征　　　　　　- 基于邮件信息（邮件主体）使用更加复杂的特征（如discount和discounts）<br>　　　　　　- 基于识别错拼字使用更加复杂的算法</p>
+<h2 id="11-2误差分析"><a href="#11-2误差分析" class="headerlink" title="11-2误差分析"></a>11-2误差分析</h2><p>　　　- 从一个简单实现的算法开始，在验证集上应用并测试。<br>　　　- 画出学习曲线决定是否需要更多的数据和特征<br>　　　- 误差分析: 人为测试被错误分类的误差，从而寻找能否选出更加系统的特征或更好的修正方法。</p>
+<h3 id="数值计算的重要性"><a href="#数值计算的重要性" class="headerlink" title="数值计算的重要性"></a>数值计算的重要性</h3><p>　　　如词干提取<em>stemming</em>, 邮件分类是否需要词干提取，取决于使用这种方法能否有效提高分类正确率。<br>　　　从数学的角度上，最好使用验证集来进行误差分析。</p>
+<h2 id="11-3不对称性分类的误差评估"><a href="#11-3不对称性分类的误差评估" class="headerlink" title="11-3不对称性分类的误差评估"></a>11-3不对称性分类的误差评估</h2><p>　　　偏斜类<em>skewed classes</em>: 正和负的比例处于极端的情况<br>　　　对偏斜类进行误差分析无法评价算法效能</p>
+<p>　　　查准率<em>Precision</em>: 在预测值为1的情况下有多少真正值为1.<br>　　　召回率<em>Recall</em>: 在真正值为1的情况下有多少预测值为1<br>　　　<img src="/2020/03/09/MLD9/11-3_P1.png" alt="pic"></p>
+<h2 id="11-4查准率和召回率的权衡"><a href="#11-4查准率和召回率的权衡" class="headerlink" title="11-4查准率和召回率的权衡"></a>11-4查准率和召回率的权衡</h2><p>　　　修改阈值，如果阈值提高，则会增加查准率，但是会降低召回率。反之，则会减少查准率，提高召回率。</p>
+<h3 id="如何从查准率和召回率抉择不同算法"><a href="#如何从查准率和召回率抉择不同算法" class="headerlink" title="如何从查准率和召回率抉择不同算法"></a>如何从查准率和召回率抉择不同算法</h3><p>　　　设P为查准率，R为召回率，用算数平均值$\frac{P+R}{2}$并不是一个很好的方法<br>　　　$F_1Score:2\frac{PR}{P+R}$<br>　　　用F值可以避免选到P或者R取到极端小值的情况。</p>
+<h2 id="11-5机器学习数据"><a href="#11-5机器学习数据" class="headerlink" title="11-5机器学习数据"></a>11-5机器学习数据</h2><p>　　　- 大量的数据量才能体现出好的算法的优势<br>　　　- 合适的特征能够帮助更好的预测<br>　　　- 使用多个特征减少偏差，训练集数量大于特征量能够有效解决高方差带来的过拟合。</p>
+<h2 id="12-1优化目标"><a href="#12-1优化目标" class="headerlink" title="12-1优化目标"></a>12-1优化目标</h2><p>　　　支持向量机<em>the Support Vector Machine, SVM</em>.<br>　　　<img src="/2020/03/09/MLD9/12-1_P1.png" alt="pic"><br>　　　用两条线来替代逻辑回归的函数图像<br>　　　<img src="/2020/03/09/MLD9/12-1_P2.png" alt="pic"><br>　　　支持向量机公式的来源<br>　　　如果X*theta&gt;=0， 则预测为1，否则预测为0</p>
+<h2 id="12-2直观上对大间隔的理解"><a href="#12-2直观上对大间隔的理解" class="headerlink" title="12-2直观上对大间隔的理解"></a>12-2直观上对大间隔的理解</h2><p>　　　<img src="/2020/03/09/MLD9/12-2_P1.png" alt="pic"></p>
+<h3 id="SVM的决策边界"><a href="#SVM的决策边界" class="headerlink" title="SVM的决策边界"></a>SVM的决策边界</h3><p>　　　<img src="/2020/03/09/MLD9/12-2_P2.png" alt="pic"><br>　　　<img src="/2020/03/09/MLD9/12-2_P3.png" alt="pic"><br>　　　例如线性可分，如果假设C是一个很大的数时，支持向量机会选择距离两种样本集间距<em>margin</em>最大的决策边界。<br>　　　<img src="/2020/03/09/MLD9/12-2_P3.png" alt="pic"><br>　　　上面提到C足够大的话，会按照两个样本集之间的最大间距去区分，但是如果出现了异常数据的话会过于敏感，像上图由于出现了一场样本，原本较为正确的黑线被调整为粉线。所以C要取到适合的值。</p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习_Day7</title>
     <url>/2020/03/06/MLD7/</url>
     <content><![CDATA[<p>吴恩达机器学习Day7</p>
