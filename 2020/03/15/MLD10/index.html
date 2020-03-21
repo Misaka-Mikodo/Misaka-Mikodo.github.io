@@ -28,7 +28,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;15&#x2F;MLD10&#x2F;12-5_P3.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;15&#x2F;MLD10&#x2F;12-6_P1.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;15&#x2F;MLD10&#x2F;13-2_P1.png">
-<meta property="og:updated_time" content="2020-03-15T16:18:29.623Z">
+<meta property="og:updated_time" content="2020-03-17T10:35:23.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;15&#x2F;MLD10&#x2F;12-3_P1.png">
   
@@ -71,7 +71,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+				<li><a href="/tags">随笔</a></li>
+	        
+				<li><a href="/archives">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -129,6 +131,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -146,12 +150,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -201,7 +207,7 @@
 <h2 id="12-6使用SVM"><a href="#12-6使用SVM" class="headerlink" title="12-6使用SVM"></a>12-6使用SVM</h2><p>　　　举例：线性核函数、高斯核函数、多项式核函数、字符串核函数、卡方核函数、直方相交核函数……<br>　　　在使用函数前进行特征归一化<br>　　　使用的核函数需要满足默塞尔定理</p>
 <p>　　　根据样本数和特征数进行选择<br>　　　<img src="/2020/03/15/MLD10/12-6_P1.png" alt="pic"><br>　　　即当特征数小，样本数量适中时，才是用高斯核函数<br>　　　其他情况下，如特征数大，样本数量过小，或者特征数小，样本数量大的时候，通常去使用线性核函数或者线性回归</p>
 <h2 id="13-1无监督学习"><a href="#13-1无监督学习" class="headerlink" title="13-1无监督学习"></a>13-1无监督学习</h2><pre><code>无监督学习*unsupervised learning*: 样本点不提供标签
-簇分配过程*cluster assignment step*</code></pre><h2 id="13-2K-means算法"><a href="#13-2K-means算法" class="headerlink" title="13-2K-means算法"></a>13-2K-means算法</h2><pre><code>聚类中心 cluster centroids</code></pre><p>　　　过程：遍历所有的样本，根据与聚类中心的距离将所有的点分成两类。将两类的点计算均值，再将聚类中心移动到均值处的位置。<br>　　　算法过程如下:<br>　　　<img src="/2020/03/15/MLD10/13-2_P1.png" alt="pic"></p>
+簇分配过程*cluster assignment step*</code></pre><h2 id="13-2K-means算法"><a href="#13-2K-means算法" class="headerlink" title="13-2K-means算法"></a>13-2K-means算法</h2><pre><code>聚类中心 cluster centroids</code></pre><p>　　　过程：遍历所有的样本，根据与聚类中心的距离将所有的点分成两类。将两类的点计算均值，再将聚类中心移动到均值处的位置。<br>　　　算法过程如下:<br>　　　<img src="/2020/03/15/MLD10/13-2_P1.png" alt="pic"><br>　　　如果遇到没有点的聚类中心，正常是将其移除，如果需要K的簇，则再重新随机化一个值。</p>
 
       
 
@@ -306,9 +312,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/03/16/Socket-Programming/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          套接字程序设计
+        
+      </div>
+    </a>
   
-    <a href="/2020/03/12/Orange-s-chapter1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Orange&#39;s_chapter1</div>
+  
+    <a href="/2020/03/11/KMP%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">KMP算法</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -327,6 +342,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3大间距分类器的数学原理"><span class="toc-number">1.</span> <span class="toc-text">12-3大间距分类器的数学原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-4核函数"><span class="toc-number">2.</span> <span class="toc-text">12-4核函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-5核函数-补充"><span class="toc-number">3.</span> <span class="toc-text">12-5核函数-补充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-6使用SVM"><span class="toc-number">4.</span> <span class="toc-text">12-6使用SVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-1无监督学习"><span class="toc-number">5.</span> <span class="toc-text">13-1无监督学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-2K-means算法"><span class="toc-number">6.</span> <span class="toc-text">13-2K-means算法</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -374,7 +402,7 @@ gitalk.render('gitalk-container')
     		&copy; 2020 御坂坂美琴琴
     	</div>
       	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      		<a href="http://hexo.io/" target="_blank">主题来源: Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
       	</div>
     </div>
   </div>
@@ -475,15 +503,31 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">/machineLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">/algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">/machineLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">/ComputerNetwork</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">微信小程序</a>
               </li>
             
             <div class="clearfix"></div>

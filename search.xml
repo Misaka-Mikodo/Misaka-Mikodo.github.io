@@ -1,6 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>机器学习-Day_14</title>
+    <url>/2020/03/20/MLD14/</url>
+    <content><![CDATA[<p>吴恩达机器学习第14天</p>
+<a id="more"></a>
+<h2 id="16-3协同过滤"><a href="#16-3协同过滤" class="headerlink" title="16-3协同过滤"></a>16-3协同过滤</h2><pre><code>collaborative filtering协同过滤</code></pre><p>　　　自行学习特征<br>　　　从用户获得theta值,借线性方程组来求出X特征<br>　　　<img src="/2020/03/20/MLD14/16-3_P1.png" alt="pic"></p>
+<h3 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h3><p>　　　设已经知道了用户的偏好theta<br>　　　则目标函数为<br>　　　<img src="/2020/03/20/MLD14/16-3_P2.png" alt="pic"></p>
+<h3 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a>协同过滤</h3><p>　　　即先给初始化的theta，在学习的过程中修改用户的偏好。（能不能收敛就不清楚了……）</p>
+<h2 id="16-4协同过滤算法"><a href="#16-4协同过滤算法" class="headerlink" title="16-4协同过滤算法"></a>16-4协同过滤算法</h2><p>　　　<img src="/2020/03/20/MLD14/16-4_P1.png" alt="pic"><br>　　　1.初始化x和theta（这里的x是不包括x0的）<br>　　　2.梯度下降<br>　　　3.根据theta和X估计用户的评分</p>
+<h2 id="16-5矢量化-低秩矩阵分解"><a href="#16-5矢量化-低秩矩阵分解" class="headerlink" title="16-5矢量化-低秩矩阵分解"></a>16-5矢量化-低秩矩阵分解</h2><pre><code>low rank matrix factorizaton低秩矩阵分解</code></pre><p>　　　<img src="/2020/03/20/MLD14/16-5_P1.png" alt="pic"></p>
+<p>　　　机器可以学习到相关的、但是难以用语言描述的特征</p>
+<h2 id="16-6实施细节-均值规范化"><a href="#16-6实施细节-均值规范化" class="headerlink" title="16-6实施细节-均值规范化"></a>16-6实施细节-均值规范化</h2><p>　　　设有一个用户没有对电影做出评分，则预测出的偏好都是0，这是不合理的。</p>
+<h3 id="均值规范化"><a href="#均值规范化" class="headerlink" title="均值规范化"></a>均值规范化</h3><p>　　　<img src="/2020/03/20/MLD14/16-6_P1.png" alt="pic"><br>　　　其实就是把均值赋给未评分的用户……简单说就是把最受欢迎的推荐给新用户。</p>
+<h2 id="17-1学习大数据集"><a href="#17-1学习大数据集" class="headerlink" title="17-1学习大数据集"></a>17-1学习大数据集</h2><p>　　　在进行大数据运算的时候，常常随机选择少量数据进行训练，从学习曲线判断学习效果。</p>
+<h2 id="17-2随机梯度下降"><a href="#17-2随机梯度下降" class="headerlink" title="17-2随机梯度下降"></a>17-2随机梯度下降</h2><pre><code>Batch gradient descent批量梯度下降
+Stochastic gradient descent随机梯度下降</code></pre><p>　　　1.随机排序这m个样本<br>　　　2.对算法过程反复运算<br>　　　<img src="/2020/03/20/MLD14/17-2_P1.png" alt="pic"><br>　　　按照说法，就是先让theta对样本一拟合一点，再让其和样本二拟合一点，如此下去，即每次只拟合一个样本。对于外层循环，常常是在1-10之间，取决于样本数量大不大。</p>
+<h2 id="17-3Mini-Batch下降"><a href="#17-3Mini-Batch下降" class="headerlink" title="17-3Mini-Batch下降"></a>17-3Mini-Batch下降</h2><p>　　　这种梯度下降使用b个样本，常用是[10, 100]<br>　　　当你有一个合适的向量化，那么Mini-Batch会算的更快，因为有高效的代数运算库。</p>
+<h2 id="17-4随机梯度下降的收敛"><a href="#17-4随机梯度下降的收敛" class="headerlink" title="17-4随机梯度下降的收敛"></a>17-4随机梯度下降的收敛</h2><p>　　　每内部遍历1000次，就标出代价函数的值。<br>　　　计算代价函数需要在更新theta之前，看看对新样本的代价函数值。<br>　　　<img src="/2020/03/20/MLD14/17-4_P1.png" alt="pic"><br>　　　因为之前是让学习率是个常数，可能会导致在随机梯度下降时在最低点附近徘徊，为了取到更好的最低点，会让学习率随着迭代次数的增加而减少。</p>
+<h2 id="17-5在线学习"><a href="#17-5在线学习" class="headerlink" title="17-5在线学习"></a>17-5在线学习</h2><p>　　　从网络访问的数据流中进行在线学习<br>　　　个性化推荐、大数据杀熟-。-</p>
+<h2 id="17-6减少映射和数据并行"><a href="#17-6减少映射和数据并行" class="headerlink" title="17-6减少映射和数据并行"></a>17-6减少映射和数据并行</h2><p>　　　Mapreduce<br>　　　在多台机器上进行数据处理（并行运算？）<br>　　　<img src="/2020/03/20/MLD14/17-4_P1.png" alt="pic"></p>
+<h2 id="18-1问题描述和OCR流水线"><a href="#18-1问题描述和OCR流水线" class="headerlink" title="18-1问题描述和OCR流水线"></a>18-1问题描述和OCR流水线</h2><p>　　　1.文本识别<br>　　　2.单词分离<br>　　　3.单词判断<br>　　　4.单词修正</p>
+<h2 id="18-2滑动窗口"><a href="#18-2滑动窗口" class="headerlink" title="18-2滑动窗口"></a>18-2滑动窗口</h2><p>　　　行人检测</p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习-Day_12</title>
+    <url>/2020/03/19/MLD12/</url>
+    <content><![CDATA[<p>吴恩达机器学习第12天</p>
+<a id="more"></a>
+<h2 id="15-1问题动机"><a href="#15-1问题动机" class="headerlink" title="15-1问题动机"></a>15-1问题动机</h2><pre><code>异常检测anomaly detection</code></pre><h3 id="密度估计"><a href="#密度估计" class="headerlink" title="密度估计"></a>密度估计</h3><p>　　　<img src="/2020/03/19/MLD12/15-1_P1.png" alt="pic"><br>　　　感觉有点像高斯分布的3sigma法则……</p>
+<p>　　　建一个模型p(X)<br>　　　若p(x)小于某个阈值则判断为异常</p>
+<h2 id="15-2高斯分布"><a href="#15-2高斯分布" class="headerlink" title="15-2高斯分布"></a>15-2高斯分布</h2><h2 id="15-3算法"><a href="#15-3算法" class="headerlink" title="15-3算法"></a>15-3算法</h2><p>　　　假设各变量之间独立，所以有<br>　　　$$P(X) = P(X_1;\mu,\sigma_1^2)P(X_2;\mu,\sigma_2^2) \dots P(X_n;\mu,\sigma_n^2) = \prod_{j=1}^n{P(X_j;\mu_j,\sigma^2_j)}$$</p>
+<p>　　　即使不独立用这个代码也可以算出较好的答案</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>　　　1.选择合适的特征$x_i$<br>　　　2.参数拟合$\mu,\sigma^2$<br>　　　3.给一个新的样本x，计算p(x)<br>　　　4.判断是否异常（小于阈值）<br>　　　<img src="/2020/03/19/MLD12/15-3_P1.png" alt="pic"></p>
+<h2 id="15-4开发和评估异常检测系统"><a href="#15-4开发和评估异常检测系统" class="headerlink" title="15-4开发和评估异常检测系统"></a>15-4开发和评估异常检测系统</h2><p>　　　开发一个评估系统，决定是否纳入一个新的特征。<br>　　　1. 假设你有一些标签样本，标明哪个是异常哪个是正常<br>　　　2. 正常的训练集<br>　　　3. 交叉集和测试集<br>　　　假设你有10000个正常数据和20个异常数据，分配如下<br>　　　<img src="/2020/03/19/MLD12/15-4_P1.png" alt="pic">
+　　　</p>
+<h3 id="算法评估"><a href="#算法评估" class="headerlink" title="算法评估"></a>算法评估</h3><p>　　　评估标准：<br>　　　　　　-真假阴阳性<br>　　　　　　-召回率和命中率<br>　　　　　　-F1-score<br>　　　还有p(x)的阈值epslion</p>
+<h2 id="15-5异常检测VS监督学习"><a href="#15-5异常检测VS监督学习" class="headerlink" title="15-5异常检测VS监督学习"></a>15-5异常检测VS监督学习</h2><p>$$<br>\begin{array}{l|l}<br>{异常检测}&amp;{监督学习}\\<br>\hline<br>{非常少的正样本，常常是0-20个}&amp;{很大数量的正样本和负样本}\\<br>{大量的负样本}\\<br>{如果有多种类的异常，很难从正样本看出是哪种异常}&amp;{}\\<br>{很难预测出未在正样本中出现的异常}&amp;{有足够的正样本去预测是何种异常和未知异常}\\<br>\end{array}<br>$$<br>　　　所以如果使用异常检测的时候需要用大量的负样本来保证算法能够学到足够多的知识<br>　　　<strong>从应用上</strong><br>$$<br>\begin{array}{l|l}<br>{异常检测}&amp;{监督学习}\\<br>\hline<br>{欺骗检测}&amp;{邮件分类}\\<br>{工业生产}&amp;{天气预测}\\<br>{数据监测机器}&amp;{癌症分类}\\<br>\end{array}<br>$$<br>　　　如果异常样本较少，则使用异常检测，如果正负样本都很多，则用监督学习。</p>
+<h2 id="15-6选择要使用的功能"><a href="#15-6选择要使用的功能" class="headerlink" title="15-6选择要使用的功能"></a>15-6选择要使用的功能</h2><p>　　　非高斯特征尝试转换为高斯特征。<br>　　　取对数变换、开根号变换<br>　　　<img src="/2020/03/19/MLD12/15-6_P1.png" alt="pic"><br>　　　话说取什么函数要一个一个试吗=.=</p>
+<h3 id="异常检测的误差分析"><a href="#异常检测的误差分析" class="headerlink" title="异常检测的误差分析"></a>异常检测的误差分析</h3><p>　　　尝试创建一个新特征，给异常样本较低的概率<br>　　　<img src="/2020/03/19/MLD12/15-6_P2.png" alt="pic"><br>　　　通过特征间关系组合出一个新的特征，来更好的监测某个错误。</p>
+<h2 id="15-7多变量高斯分布"><a href="#15-7多变量高斯分布" class="headerlink" title="15-7多变量高斯分布"></a>15-7多变量高斯分布</h2><p>　　　<img src="/2020/03/19/MLD12/15-7_P1.png" alt="pic"><br>　　　为了解决某些不符合常规数据，但是却在单个特征的高斯分布中占大概率的情况。<br>　　　<img src="/2020/03/19/MLD12/15-7_P2.png" alt="pic"></p>
+<h3 id="协方差矩阵的影响"><a href="#协方差矩阵的影响" class="headerlink" title="协方差矩阵的影响"></a>协方差矩阵的影响</h3><p>　　　以下是对2*2的协方差矩阵而言<br>　　　左上角元素决定在x1方向上的缩放率<br>　　　右下角元素决定在x2方向上的缩放率<br>　　　<img src="/2020/03/19/MLD12/15-7_P3.png" alt="pic"><br>　　　<img src="/2020/03/19/MLD12/15-7_P4.png" alt="pic"><br>　　　如果是负数的话代表等高线向另一个方向倾斜</p>
+<h3 id="μ的影响"><a href="#μ的影响" class="headerlink" title="μ的影响"></a>μ的影响</h3><p>　　　<img src="/2020/03/19/MLD12/15-7_P5.png" alt="pic"><br>　　　改变分布的中心</p>
+<h2 id="15-8使用多变量高斯分布的异常检测"><a href="#15-8使用多变量高斯分布的异常检测" class="headerlink" title="15-8使用多变量高斯分布的异常检测"></a>15-8使用多变量高斯分布的异常检测</h2><p>　　　参数估计后再带入公式<br>　　　<img src="/2020/03/19/MLD12/15-8_P1.png" alt="pic"><br>　　　<br>　　　传统的模型，即原来用概率累积的方式，是轴对齐的；原始模型的计算成本比较低；适用于创造不同特征之间组合产生的新的特征；即使样本集数量少也能够使用；</p>
+<p>　　　新的模型会自动捕捉特征之间的相关性；计算代价大；且必须保证样本集大于特征否则协方差矩阵不可逆。(m ≥ 10n)；协方差矩阵不可逆的原因可能是样本数量太少，或者冗余（即线性相关）的特征太多。</p>
+<h2 id="16-1推荐系统的问题规划"><a href="#16-1推荐系统的问题规划" class="headerlink" title="16-1推荐系统的问题规划"></a>16-1推荐系统的问题规划</h2><p>　　　参数介绍<br>　　　$n_u$表示用户号，$n_m$表示电影标号<br>　　　$r(i,j)=1$ 表示用户j已经对电影i评过分<br>　　　$y^{(i,j)}$ 当用户j对电影i评过分时，评分的高低</p>
+<p>　　　<img src="/2020/03/19/MLD12/16-1_P1.png" alt="pic"></p>
+<h2 id="16-2基于内容的推荐算法"><a href="#16-2基于内容的推荐算法" class="headerlink" title="16-2基于内容的推荐算法"></a>16-2基于内容的推荐算法</h2><p>　　　根据特征，对内容进行分类。<br>　　　求出某个参数theta，根据求出的theta乘上x来预测。</p>
+<p>　　　优化目标<br>　　　　　　<img src="/2020/03/19/MLD12/16-2_P1.png" alt="pic"></p>
+<p>　　　梯度下降<br>　　　　　　<img src="/2020/03/19/MLD12/16-2_P2.png" alt="pic"></p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习-day_11</title>
+    <url>/2020/03/19/MLD11/</url>
+    <content><![CDATA[<p>吴恩达机器学习Day11</p>
+<a id="more"></a>
+<h2 id="13-3优化目标"><a href="#13-3优化目标" class="headerlink" title="13-3优化目标"></a>13-3优化目标</h2><p>　　　$c^{(i)}$表示样本$x^{(i)}$所属的聚类中心index<br>　　　$\mu_k$第k个均值中心的位置<br>　　　$\mu_c^{(i)}$表示$x^{(i)}$所属的聚类中心的位置<br>　　　如$x^{(i)}=5, c^{(i)}=5, so \; \mu_c^{(i)}=\mu_5 $<br>　　　优化目标函数，也叫失真代价函数<em>(distortion cost function)</em><br>　　　<img src="/2020/03/19/MLD11/13-3_P1.png" alt="pic"><br>　　　K-均值算法<br>　　　初始化聚类中心的值<br>　　　弹幕提到这和物理上的旋转类似，旋转的最后结果总是会围绕某个轴。<br>　　　<img src="/2020/03/19/MLD11/13-3_P2.png" alt="pic"><br>　　　找出每个点所属的聚类中心的值也相当于最小化代价函数<br>　　　其次是根据均值找出各聚类中心的新位置</p>
+<h2 id="13-4随机初始化"><a href="#13-4随机初始化" class="headerlink" title="13-4随机初始化"></a>13-4随机初始化</h2><p>　　　1. 聚类中心的数量必须小于样本量<br>　　　2. 随机选取K个训练样本<br>　　　3. 将这些训练样本作为聚类中心</p>
+<p>　　　局部最优<br>　　　　　　<img src="/2020/03/19/MLD11/13-4_P1.png" alt="pic"><br>　　　做法<br>　　　　　　多次随机化聚类中心，运行算法，计算代价函数。</p>
+<h2 id="13-5选取聚类数量"><a href="#13-5选取聚类数量" class="headerlink" title="13-5选取聚类数量"></a>13-5选取聚类数量</h2><pre><code>肘部法则 the Elbow Method</code></pre><p>　　　改变K的数量，计算各种情况的代价函数值<br>　　　<img src="/2020/03/19/MLD11/13-4_P1.png" alt="pic"><br>　　　如果和左图所示，图中有明显拐点，则拐点是较佳的K值，但如果右图没有明显拐点的就很难选出适合的K值</p>
+<p>　　　查找什么K值适合后续目的<br>　　　如服装，需要分成大中小三种码数，则此时选择3种聚类中心是合适的。</p>
+<h2 id="14-1目标1——数据压缩"><a href="#14-1目标1——数据压缩" class="headerlink" title="14-1目标1——数据压缩"></a>14-1目标1——数据压缩</h2><p>　　　维度压缩；减少类似的、无关紧要的特征。<br>　　　举例：将二维特征压缩为一维特征<br>　　　　　　<img src="/2020/03/19/MLD11/14-1_P1.png" alt="pic"></p>
+<p>　　　将三维特征压缩为二维特征<br>　　　　　　将三维空间点投影到一个二维平面上<br>　　　　　　<img src="/2020/03/19/MLD11/14-1_P2.png" alt="pic"></p>
+<h2 id="14-2目标2——可视化"><a href="#14-2目标2——可视化" class="headerlink" title="14-2目标2——可视化"></a>14-2目标2——可视化</h2><p>　　　将大量的特征压缩为2-3个具有特征性的特征，然后画在图表上查看</p>
+<h2 id="14-3主成分分析问题规划1"><a href="#14-3主成分分析问题规划1" class="headerlink" title="14-3主成分分析问题规划1"></a>14-3主成分分析问题规划1</h2><pre><code>Principal Component Analysis(PCA)</code></pre><p>　　　PCA找到一个投影平面，在投影误差最小的前提下，将高维数据压缩为低维。</p>
+<p>　　　将n维数据压缩到k维：找到k个向量$u^{(1)} \dots u^{(k)}$来投影这些样本点，最小化这个投影误差。</p>
+<p>　　　尽管看上有些像素，但是PCA和线性回归不同，在PCA中计算的是投影误差（正交误差），而线性回归是垂直误差。</p>
+<h2 id="14-4主成分分析问题规划2"><a href="#14-4主成分分析问题规划2" class="headerlink" title="14-4主成分分析问题规划2"></a>14-4主成分分析问题规划2</h2><p>　　　1. 预处理：特征归一化和均值标准化<br>　　　2. 计算协方差<em>covariance matrix</em><br>　　　$$\Sigma = \frac{1}{m}\sum_{i=1}^{n}{(x^{(i)}-\mu)(x^{(i)}-\mu)^T}$$<br>　　　(貌似图片给的公式有误)<br>　　　3. 计算协方差矩阵的特征向量<br>　　　$$[U,S,V] = svd(Sigma)$$<br>　　　<img src="/2020/03/19/MLD11/14-4_P1.png" alt="pic"><br>　　　U的前k个向量既是投影方向<br>　　　4. 用算出来的投影方向乘上X得到新的向量Z<br>　　　<img src="/2020/03/19/MLD11/14-4_P2.png" alt="pic"></p>
+<h2 id="14-5主成分数量选择"><a href="#14-5主成分数量选择" class="headerlink" title="14-5主成分数量选择"></a>14-5主成分数量选择</h2><p>　　　选择k：1. 平均平方投影误差<br>　　　　　　 2. 计算数据的总方差<br>　　　　　　 3. 选择最小的k使得下面是自≤0.01，即“99%的方差性得以保留”<br>　　　<img src="/2020/03/19/MLD11/14-5_P1.png" alt="pic"></p>
+<h3 id="选择k的算法"><a href="#选择k的算法" class="headerlink" title="选择k的算法"></a>选择k的算法</h3><p>　　　<img src="/2020/03/19/MLD11/14-5_P2.png" alt="pic"><br>　　　这个S是一个n*n的矩阵，除了对角线之外其他元素都是0，可是不知道为什么用$$1-\frac{\sum_{i=1}^k{S_{ii}}}{\sum_{i=1}^n{S_{ii}}} \leq 0.01$$</p>
+<h2 id="14-6压缩重现"><a href="#14-6压缩重现" class="headerlink" title="14-6压缩重现"></a>14-6压缩重现</h2><p>　　　<img src="/2020/03/19/MLD11/14-6_P1.png" alt="pic"><br>　　　$$X_approx^{(1)} = U_reduce · z^{(1)}$$</p>
+<h2 id="14-7应用PCA的建议"><a href="#14-7应用PCA的建议" class="headerlink" title="14-7应用PCA的建议"></a>14-7应用PCA的建议</h2><h3 id="加速监督学习"><a href="#加速监督学习" class="headerlink" title="加速监督学习"></a>加速监督学习</h3><p>　　　<img src="/2020/03/19/MLD11/14-7_P1.png" alt="pic"></p>
+<h3 id="错误使用PCA"><a href="#错误使用PCA" class="headerlink" title="错误使用PCA"></a>错误使用PCA</h3><p>　　　PCA不是防止过拟合的方式。PCA在不考虑y值的情况下舍弃掉了一些有用的信息，只是单纯保持了样本的方差。</p>
+<p>　　　PCA并非一定要用，在应用PCA之前先使用原始数据，如果不能很好地拟合的话才会使用PCA算法。</p>
+]]></content>
+      <tags>
+        <tag>/machineLearning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>套接字程序设计</title>
+    <url>/2020/03/16/Socket-Programming/</url>
+    <content><![CDATA[<p>套接字程序设计</p>
+<h2 id="什么是套接字"><a href="#什么是套接字" class="headerlink" title="什么是套接字"></a>什么是套接字</h2><p>　　　<img src="/2020/03/16/Socket-Programming/socket_P1.png" alt="pic"><br>　　　步骤：1.通过IP地址或者域名找到主机（如<a href="http://www.xxx.com-&gt;202.116.64.8）" target="_blank" rel="noopener">www.xxx.com-&gt;202.116.64.8）</a><br>　　　　　　2.通过端口号找到主机上的进程(UDP协议[不可靠]，TCP协议[面向连接、可靠])</p>
+<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p>　　　端口号由16bit组成<br>　　　其中包括</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id1[分类]--&gt;id2[知名端口号  0-1023]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id1--&gt;id3[注册端口号  1024-49151]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id1--&gt;id4[动态端口号  49125-65535]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---80-HTTP协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---21-ftp协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---23-telnet协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---25-SMTP协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---110-POP3协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id3---id6[公司业务]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id4---id5[临时连接]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id5---用户可以随意使用</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id6---用户可以随意使用</span></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>/ComputerNetwork</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习-Day_10</title>
     <url>/2020/03/15/MLD10/</url>
     <content><![CDATA[<p>吴恩达机器学习-Day_10</p>
@@ -17,16 +114,11 @@
 <h2 id="12-6使用SVM"><a href="#12-6使用SVM" class="headerlink" title="12-6使用SVM"></a>12-6使用SVM</h2><p>　　　举例：线性核函数、高斯核函数、多项式核函数、字符串核函数、卡方核函数、直方相交核函数……<br>　　　在使用函数前进行特征归一化<br>　　　使用的核函数需要满足默塞尔定理</p>
 <p>　　　根据样本数和特征数进行选择<br>　　　<img src="/2020/03/15/MLD10/12-6_P1.png" alt="pic"><br>　　　即当特征数小，样本数量适中时，才是用高斯核函数<br>　　　其他情况下，如特征数大，样本数量过小，或者特征数小，样本数量大的时候，通常去使用线性核函数或者线性回归</p>
 <h2 id="13-1无监督学习"><a href="#13-1无监督学习" class="headerlink" title="13-1无监督学习"></a>13-1无监督学习</h2><pre><code>无监督学习*unsupervised learning*: 样本点不提供标签
-簇分配过程*cluster assignment step*</code></pre><h2 id="13-2K-means算法"><a href="#13-2K-means算法" class="headerlink" title="13-2K-means算法"></a>13-2K-means算法</h2><pre><code>聚类中心 cluster centroids</code></pre><p>　　　过程：遍历所有的样本，根据与聚类中心的距离将所有的点分成两类。将两类的点计算均值，再将聚类中心移动到均值处的位置。<br>　　　算法过程如下:<br>　　　<img src="/2020/03/15/MLD10/13-2_P1.png" alt="pic"></p>
+簇分配过程*cluster assignment step*</code></pre><h2 id="13-2K-means算法"><a href="#13-2K-means算法" class="headerlink" title="13-2K-means算法"></a>13-2K-means算法</h2><pre><code>聚类中心 cluster centroids</code></pre><p>　　　过程：遍历所有的样本，根据与聚类中心的距离将所有的点分成两类。将两类的点计算均值，再将聚类中心移动到均值处的位置。<br>　　　算法过程如下:<br>　　　<img src="/2020/03/15/MLD10/13-2_P1.png" alt="pic"><br>　　　如果遇到没有点的聚类中心，正常是将其移除，如果需要K的簇，则再重新随机化一个值。</p>
 ]]></content>
       <tags>
         <tag>/machineLearning</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Orange&#39;s_chapter1</title>
-    <url>/2020/03/12/Orange-s-chapter1/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>KMP算法</title>
@@ -141,7 +233,7 @@
       </tags>
   </entry>
   <entry>
-    <title>ML_ex1</title>
+    <title>机器学习编程作业-1</title>
     <url>/2020/03/03/ML-ex1/</url>
     <content><![CDATA[<p>吴恩达机器学习习题ex1解答<br>原题可以在这里找到，需要用邮箱注册，不需要翻墙<br><a href="https://www.coursera.org/learn/machine-learning/home/welcome" target="_blank" rel="noopener">coursera学习网站，类似中国的mooc</a></p>
 <a id="more"></a>
@@ -168,7 +260,7 @@
       </tags>
   </entry>
   <entry>
-    <title>MLD4</title>
+    <title>机器学习-Day_4</title>
     <url>/2020/03/03/MLD4/</url>
     <content><![CDATA[<p>吴恩达机器学习笔记第四天</p>
 <a id="more"></a>
@@ -228,7 +320,7 @@
   </entry>
   <entry>
     <title>机器学习-Day_1</title>
-    <url>/2020/02/29/machine-learning/</url>
+    <url>/2020/02/29/MLD1/</url>
     <content><![CDATA[<p><a href="https://www.bilibili.com/video/av50747658?from=search&seid=16348381955975479986" target="_blank" rel="noopener">视频链接</a>  </p>
 <p>关于吴恩达机器学习的笔记</p>
 <a id="more"></a>
@@ -241,34 +333,34 @@
 <h4 id="无监督学习unsupervised"><a href="#无监督学习unsupervised" class="headerlink" title="无监督学习unsupervised"></a>无监督学习unsupervised</h4><p>　　<br>　　让机器自己学习</p>
 <h4 id="其他一些词"><a href="#其他一些词" class="headerlink" title="其他一些词"></a>其他一些词</h4><p>　　强化学习Reinforcement learning<br>　　推荐系统recommender systems  
 　　</p>
-<h2 id="第三节"><a href="#第三节" class="headerlink" title="第三节"></a>第三节</h2><h3 id="举例：房价预测"><a href="#举例：房价预测" class="headerlink" title="举例：房价预测"></a>举例：房价预测</h3><p>　　<img src="/2020/02/29/machine-learning/2_P1.png" alt="pic"><br>　　给出数据集，用函数拟合数据分布。问题在于用什么模型拟合数据。</p>
+<h2 id="第三节"><a href="#第三节" class="headerlink" title="第三节"></a>第三节</h2><h3 id="举例：房价预测"><a href="#举例：房价预测" class="headerlink" title="举例：房价预测"></a>举例：房价预测</h3><p>　　<img src="/2020/02/29/MLD1/2_P1.png" alt="pic"><br>　　给出数据集，用函数拟合数据分布。问题在于用什么模型拟合数据。</p>
 <h3 id="监督学习定义"><a href="#监督学习定义" class="headerlink" title="监督学习定义"></a>监督学习定义</h3><p>　　we gave the algorithm a data set in which the “right answers” were given, That is, we gave it a data set of houses, in which for every example in this data set, we told it what is the right price, the task of the algorithm is to prodeve more of these tight answers.</p>
 <h4 id="回归问题Regressin-problem"><a href="#回归问题Regressin-problem" class="headerlink" title="回归问题Regressin problem"></a>回归问题Regressin problem</h4><p>　　Predict <strong>连续值continuous values</strong> output.</p>
-<h3 id="另一例子-预测肿瘤"><a href="#另一例子-预测肿瘤" class="headerlink" title="另一例子:预测肿瘤"></a>另一例子:预测肿瘤</h3><h4 id="分类问题classification-problem"><a href="#分类问题classification-problem" class="headerlink" title="分类问题classification problem"></a>分类问题classification problem</h4><p>　　<img src="/2020/02/29/machine-learning/2_P2.png" alt="pic"><br>　　trying to predict a <strong>离散值discrete valued</strong> output.</p>
-<h4 id="不止一个feature-attrubite"><a href="#不止一个feature-attrubite" class="headerlink" title="不止一个feature/attrubite"></a>不止一个feature/attrubite</h4><p>　　<img src="/2020/02/29/machine-learning/2_P3.png" alt="pic"></p>
+<h3 id="另一例子-预测肿瘤"><a href="#另一例子-预测肿瘤" class="headerlink" title="另一例子:预测肿瘤"></a>另一例子:预测肿瘤</h3><h4 id="分类问题classification-problem"><a href="#分类问题classification-problem" class="headerlink" title="分类问题classification problem"></a>分类问题classification problem</h4><p>　　<img src="/2020/02/29/MLD1/2_P2.png" alt="pic"><br>　　trying to predict a <strong>离散值discrete valued</strong> output.</p>
+<h4 id="不止一个feature-attrubite"><a href="#不止一个feature-attrubite" class="headerlink" title="不止一个feature/attrubite"></a>不止一个feature/attrubite</h4><p>　　<img src="/2020/02/29/MLD1/2_P3.png" alt="pic"></p>
 <h3 id="无穷量特征"><a href="#无穷量特征" class="headerlink" title="无穷量特征"></a>无穷量特征</h3><p>　　举例：支持向量机算法the support Vector Machine</p>
 <h2 id="第四节"><a href="#第四节" class="headerlink" title="第四节"></a>第四节</h2><h3 id="无监督学习定义"><a href="#无监督学习定义" class="headerlink" title="无监督学习定义"></a>无监督学习定义</h3><p>　　给出大量的数据集要求它找出数据的类型结构。</p>
-<h4 id="聚类算法cluster-algorithm"><a href="#聚类算法cluster-algorithm" class="headerlink" title="聚类算法cluster algorithm"></a>聚类算法cluster algorithm</h4><p>　　<img src="/2020/02/29/machine-learning/3_P1.png" alt="pic"></p>
+<h4 id="聚类算法cluster-algorithm"><a href="#聚类算法cluster-algorithm" class="headerlink" title="聚类算法cluster algorithm"></a>聚类算法cluster algorithm</h4><p>　　<img src="/2020/02/29/MLD1/3_P1.png" alt="pic"></p>
 <h5 id="举例：谷歌新闻"><a href="#举例：谷歌新闻" class="headerlink" title="举例：谷歌新闻"></a>举例：谷歌新闻</h5><p>　　搜索新闻并自动分簇</p>
 <h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><p>　　组织大型计算机集群<br>　　社交网络分析<br>　　细分市场<br>　　天文数据分析</p>
 <h4 id="鸡尾酒会"><a href="#鸡尾酒会" class="headerlink" title="鸡尾酒会"></a>鸡尾酒会</h4><p>　　两个人说话，由两个不同位置的麦克风录音。（即声音分离）。<br>　　[W,s,v] = svd(((repmat(sum（x.<em>x,1),size(x,1),1).</em>x)*x’);</p>
 <h4 id="工具和环境"><a href="#工具和环境" class="headerlink" title="工具和环境"></a>工具和环境</h4><h5 id="Octave"><a href="#Octave" class="headerlink" title="Octave"></a>Octave</h5><h2 id="2-1模型描述"><a href="#2-1模型描述" class="headerlink" title="2.1模型描述"></a>2.1模型描述</h2><h3 id="（数据集）训练集"><a href="#（数据集）训练集" class="headerlink" title="（数据集）训练集"></a>（数据集）训练集</h3><p>　　<strong>m</strong> = 训练样本数量<br>　　<strong>x</strong>‘s = 输入的变量或特征<br>　　<strong>y</strong>‘s = 输出或目标变量<br>　　(x,y) 为一个输出样本<br>　　$(x^{(i)}, y^{(i)})$ 表示第i个样本  
 　　</p>
-<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>　　<img src="/2020/02/29/machine-learning/2-1_P1.png" alt="pic"><br>　　向学习函数learning algorithm提供训练集training set，由学习函数输出假设函数h hypothesis，h is a func make x map from x to y.</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>　　<img src="/2020/02/29/MLD1/2-1_P1.png" alt="pic"><br>　　向学习函数learning algorithm提供训练集training set，由学习函数输出假设函数h hypothesis，h is a func make x map from x to y.</p>
 <h4 id="how-do-we-represent-h"><a href="#how-do-we-represent-h" class="headerlink" title="how do we represent h?"></a>how do we represent h?</h4><p>　　$$ h_θ(x) = θ_0 + θ_1x $$<br>　　<strong>the univariate linear regressoin</strong> 单变量线性回归</p>
 <h2 id="2-2代价函数-数学定义"><a href="#2-2代价函数-数学定义" class="headerlink" title="2.2代价函数-数学定义"></a>2.2代价函数-数学定义</h2><p>　　$θ_i$: the Parameter of the model 模型参数  </p>
-<h3 id="some-diffierent-models"><a href="#some-diffierent-models" class="headerlink" title="some diffierent models"></a>some diffierent models</h3><p>　　<img src="/2020/02/29/machine-learning/2-2_P1.png" alt="pic"><br>　　Goal: 找到一个使得$ \frac {1}{2m} \sum_{i=1}^m(h_θ(x^{i})-y)^2 $ 最小的参数  </p>
+<h3 id="some-diffierent-models"><a href="#some-diffierent-models" class="headerlink" title="some diffierent models"></a>some diffierent models</h3><p>　　<img src="/2020/02/29/MLD1/2-2_P1.png" alt="pic"><br>　　Goal: 找到一个使得$ \frac {1}{2m} \sum_{i=1}^m(h_θ(x^{i})-y)^2 $ 最小的参数  </p>
 <h3 id="the-cost-function"><a href="#the-cost-function" class="headerlink" title="the cost function"></a>the cost function</h3><p>　　 $ \mathtt{J} \left( θ_0,θ_1x \right) = \frac {1}{2m} \sum_{i=1}^m {\left( h_θ \left( x^{i} \right ) -y \right)} ^2 $<br>　　 代价函数 also recognized as <strong>squre error cost function</strong>.</p>
-<h2 id="2-3-4代价函数-应用"><a href="#2-3-4代价函数-应用" class="headerlink" title="2.3-4代价函数-应用"></a>2.3-4代价函数-应用</h2><h3 id="the-graph-of-two-funtion-hypothesis-amp-amp-cost"><a href="#the-graph-of-two-funtion-hypothesis-amp-amp-cost" class="headerlink" title="the graph of two funtion(hypothesis &amp;&amp; cost)"></a>the graph of two funtion(hypothesis &amp;&amp; cost)</h3><p>　　以下为$θ_0 = 0$的情况<br>　　<img src="/2020/02/29/machine-learning/2-2_P2.png" alt="pic"><br>　　h(x)的自变量是给定θ后x的函数，J(θ)是参数θ的函数  </p>
-<p>　　以下为不等于0的情况<br>　　由于是两个参数，所以代价函数使用等高线contour figure表示<br>　　<img src="/2020/02/29/machine-learning/2-2_P3.png" alt="pic">
+<h2 id="2-3-4代价函数-应用"><a href="#2-3-4代价函数-应用" class="headerlink" title="2.3-4代价函数-应用"></a>2.3-4代价函数-应用</h2><h3 id="the-graph-of-two-funtion-hypothesis-amp-amp-cost"><a href="#the-graph-of-two-funtion-hypothesis-amp-amp-cost" class="headerlink" title="the graph of two funtion(hypothesis &amp;&amp; cost)"></a>the graph of two funtion(hypothesis &amp;&amp; cost)</h3><p>　　以下为$θ_0 = 0$的情况<br>　　<img src="/2020/02/29/MLD1/2-2_P2.png" alt="pic"><br>　　h(x)的自变量是给定θ后x的函数，J(θ)是参数θ的函数  </p>
+<p>　　以下为不等于0的情况<br>　　由于是两个参数，所以代价函数使用等高线contour figure表示<br>　　<img src="/2020/02/29/MLD1/2-2_P3.png" alt="pic">
 　　</p>
 <h2 id="2-5梯度下降Gredient-descent"><a href="#2-5梯度下降Gredient-descent" class="headerlink" title="2.5梯度下降Gredient descent"></a>2.5梯度下降Gredient descent</h2><h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><p>　　1、Start with some initial value<br>　　2、Keep changing to reduce cost func until it end up at a minimum</p>
 <h3 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h3><p>　　 个人理解:任意选定一个起始点，决定一个最佳下降的方向迈出一步，然后从新起点出发，循环上述过程，直到收敛到局部最低点。  </p>
 <h3 id="数学描述"><a href="#数学描述" class="headerlink" title="数学描述"></a>数学描述</h3><p>　　 repeat until convergence{<br>　　 　　 $θ_j := θ_0 - α\frac{∂}{∂θ_j}J\left(θ_0,θ_1\right)　　 \left(for \; j = 0 \; and \; j = 1 \; \right)$<br>　　 }  </p>
-<p>　　 α is called <strong>the learning rate</strong> 学习率<br>　　 Correct: Simultaneous update 同时更新<br>　　 <img src="/2020/02/29/machine-learning/2-5_P1.png" alt="pic"></p>
-<h2 id="2-6梯度下降知识点总结"><a href="#2-6梯度下降知识点总结" class="headerlink" title="2.6梯度下降知识点总结"></a>2.6梯度下降知识点总结</h2><p>　　 $ \frac{∂}{∂θ_j}J\left(θ_0,θ_1\right) $ 就是代价函数在θ点上的斜率。更新的理论如图：<br>　　 <img src="/2020/02/29/machine-learning/2-6_P1.png" alt="pic"><br>　　 在上面的图像中，斜率为正数，α一定为正数，故θ向左移动。<br>　　 在下面的图像中，斜率为负数，α为正数，故θ向右移动。两侧都在往最低点收敛。  </p>
-<p>　　 <img src="/2020/02/29/machine-learning/2-6_P2.png" alt="pic"><br>　　 如果α太大时，梯度下降速度较慢，反之则较快。<br>　　 当达到局部最低点时，斜率为0，θ保持。由导数项和学习率共同控制下降幅度。</p>
-<h2 id="2-7线性回归的梯度下降"><a href="#2-7线性回归的梯度下降" class="headerlink" title="2.7线性回归的梯度下降"></a>2.7线性回归的梯度下降</h2><p>　　<img src="/2020/02/29/machine-learning/2-7_P1.png" alt="pic"><br>　  <img src="/2020/02/29/machine-learning/2-7_P2.png" alt="pic"><br>　  注意右式是求导之后的结果，将假设函数h(x)展开之后会更好理解。<br>　  $ θ_0 := θ_0 - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}^2 $<br>　  $ θ_0 := θ_0 - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}^2 \dot x^{\left(i\right)}$<br>　  线性回归梯度下降结果是一个凸函数convex function.只有一个全局最优解。<br>　  “Batch” Gradient Descent指每一次梯度下降都使用了所有了训练集。<br>　  BB一句，线性回归方程在概率论有参数估计的方法，老师也说在大数据集中梯度下降才有更好的表现。</p>
+<p>　　 α is called <strong>the learning rate</strong> 学习率<br>　　 Correct: Simultaneous update 同时更新<br>　　 <img src="/2020/02/29/MLD1/2-5_P1.png" alt="pic"></p>
+<h2 id="2-6梯度下降知识点总结"><a href="#2-6梯度下降知识点总结" class="headerlink" title="2.6梯度下降知识点总结"></a>2.6梯度下降知识点总结</h2><p>　　 $ \frac{∂}{∂θ_j}J\left(θ_0,θ_1\right) $ 就是代价函数在θ点上的斜率。更新的理论如图：<br>　　 <img src="/2020/02/29/MLD1/2-6_P1.png" alt="pic"><br>　　 在上面的图像中，斜率为正数，α一定为正数，故θ向左移动。<br>　　 在下面的图像中，斜率为负数，α为正数，故θ向右移动。两侧都在往最低点收敛。  </p>
+<p>　　 <img src="/2020/02/29/MLD1/2-6_P2.png" alt="pic"><br>　　 如果α太大时，梯度下降速度较慢，反之则较快。<br>　　 当达到局部最低点时，斜率为0，θ保持。由导数项和学习率共同控制下降幅度。</p>
+<h2 id="2-7线性回归的梯度下降"><a href="#2-7线性回归的梯度下降" class="headerlink" title="2.7线性回归的梯度下降"></a>2.7线性回归的梯度下降</h2><p>　　<img src="/2020/02/29/MLD1/2-7_P1.png" alt="pic"><br>　  <img src="/2020/02/29/MLD1/2-7_P2.png" alt="pic"><br>　  注意右式是求导之后的结果，将假设函数h(x)展开之后会更好理解。<br>　  $ θ_0 := θ_0 - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}^2 $<br>　  $ θ_0 := θ_0 - \alpha \frac{1}{m} \sum_{i=1}^m{\left(h_θ\left(x^{i}\right)-y\right)}^2 \dot x^{\left(i\right)}$<br>　  线性回归梯度下降结果是一个凸函数convex function.只有一个全局最优解。<br>　  “Batch” Gradient Descent指每一次梯度下降都使用了所有了训练集。<br>　  BB一句，线性回归方程在概率论有参数估计的方法，老师也说在大数据集中梯度下降才有更好的表现。</p>
 ]]></content>
       <tags>
         <tag>/machineLearning</tag>
@@ -286,6 +378,9 @@
 <h1 id="改进的思路"><a href="#改进的思路" class="headerlink" title="改进的思路"></a>改进的思路</h1><h2 id="关于颜色单一的问题"><a href="#关于颜色单一的问题" class="headerlink" title="关于颜色单一的问题"></a>关于颜色单一的问题</h2><p>　　如果资源库的图片不够多，且大图颜色较为单一时，图像在拼接的时候很容易就出现同一张图片多次出现的情况，这样就不能很好的把所有图片利用起来，这里我想到在每一个小图设置一个优先级priority，使用过一次之后降低它的优先级，允许其他张图片来补充这一块像素，当然为了防止颜色差异过大，仍然需要在一定的误差内。<br>　　例如A图和B图和C图，优先级相同都为0，误差计算公式为 $目前最小误差±优先级$ 某一块的RGB均值与三张图的RGB差分别为1，2，4，那么首先找到差值最小的A图，优先级减低为1，其次再寻找的时候再遍历一次三个图，发现B图是优先级最高，且满足误差范围[0,2],故选择B图。<br>　　第三次寻找误差范围是[0,3],此时没有高优先级的图满足，所以在优先级为1的图中找误差最小的A图，A图优先级变成2，误差范围[0,4],此时C图满足误差范围且优先级最高，故选择C图，这么选择的话既能保证用上了尽量多的图片，又能保证颜色误差不会过大。  </p>
 <h2 id="关于识别图像"><a href="#关于识别图像" class="headerlink" title="关于识别图像"></a>关于识别图像</h2><p>　　在找图片对应的时候，用RGB均值差找到相近图像只是一个比较粗略的办法，需要切割到足够小块才能保证和大图相近，但是在现实情况下这么处理很花时间，如果能通过图像识别的方法来处理的话能大大加快对应和拼接的进度，相关知识在下方的博客有介绍：<br>　　<a href="http://www.ruanyifeng.com/blog/2011/07/principle_of_similar_image_search.html" target="_blank" rel="noopener">相似图片搜索的原理</a></p>
 ]]></content>
+      <tags>
+        <tag>黑科技</tag>
+      </tags>
   </entry>
   <entry>
     <title>学校管理系统</title>
@@ -296,6 +391,10 @@
 <h2 id="遇到的一些问题"><a href="#遇到的一些问题" class="headerlink" title="遇到的一些问题"></a>遇到的一些问题</h2><h3 id="git的使用尚不明确"><a href="#git的使用尚不明确" class="headerlink" title="git的使用尚不明确"></a>git的使用尚不明确</h3><p>这边做项目打算用git记录每次项目的进度，并且每天git push到github上，但是目前熟悉的只是基础的add、merge、commit等功能，一旦遇到冲突的话就没办法解决了，虽然教程有说方法，但是打算等遇到了再去看教程</p>
 <h3 id="icon的寻找"><a href="#icon的寻找" class="headerlink" title="icon的寻找"></a>icon的寻找</h3><p>推荐一个好的网站<a href="https://www.iconfont.cn/?spm=a313x.7781069.1998910419.d4d0a486a" target="_blank" rel="noopener">阿里巴巴的icon</a>，这里有很多的icon使用  </p>
 ]]></content>
+      <tags>
+        <tag>黑科技</tag>
+        <tag>微信小程序</tag>
+      </tags>
   </entry>
   <entry>
     <title>python上generator 的一些疑惑</title>
@@ -313,16 +412,9 @@
 <p>　　<code>[[1], [1, 0], [1, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0, 0]]</code></p>
 <h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>　　python里面的数据都是动态的，L += [0]只是基于同一个地址进行修改，所以在results里面的元素其实都是指向同一个list，而L = L + [0]是形成了一个新的数据，所以在yield的时候导入了“新地址”（至于是否是用一个地址，还是新的地址但是是同一个值，原因无法确定）<br>　　但是这一个结果告诉我们，python里面L = L + [0] 和 L += [0]两个式子并不是完全等价的，这是一个和C语言不同的地方</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>初探githubDesktop的使用</title>
-    <url>/2020/01/15/%E5%88%9D%E6%8E%A2githubDesktop%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>opencv_draw</title>
-    <url>/2019/12/07/opencv-draw/</url>
-    <content><![CDATA[]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hexo的第一次安装</title>
@@ -333,23 +425,8 @@
 <h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><p>　　首先下载一个nodejs的软件。因为我是windows10 64位系统，所以选择的是图中所高亮的那个安装包。<br><br> <img src="/2019/12/06/Hexo-install/nodejs_install.png" alt="Hexo-install"><br>　　下载之后就可以安装啦。这边注意：如果你要装在其它路径下要先创建好对应的文件夹再放进去，否则会直接把一大堆文件塞进你选定的路径……<br><br> <img src="/2019/12/06/Hexo-install/nodejs_comp.png" alt="Hexo-install">  <img src="/2019/12/06/Hexo-install/nodejs_path.png" alt="Hexo-install"><br>　　安装成功后进去cmd界面查看，若能显示出对应的版本号说明安装成功了。<br>　　<code>node --version</code><br>　　<code>npm --version</code><br><br> <img src="/2019/12/06/Hexo-install/correct.png" alt="Hexo-install"><br>　　接下来使用npm下载cnpm，用的是淘宝的镜像源。<br>　　<code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br><br> <img src="/2019/12/06/Hexo-install/cmd_cpm.png" alt="Hexo-install"><br>　　安装成果后输入<code>cnpm --version</code>查看安装情况，若显示出对应的版本号说明安装正确。<br> <img src="/2019/12/06/Hexo-install/cmd_cnpm_comp.png" alt="Hexo-install"><br>　　下载完cnpm后，再用cnpm来下载hexo。首先先输入<code>mkdir blog</code>创建一个文件夹，然后进入该文件夹，在这里要注意，<strong>接下来的所有操作都是在这个文件夹进行的</strong>，完成后就可以输入<code>cnpm install -g hexo-cli</code>进行安装了，安装过程如下：<br><br> <img src="/2019/12/06/Hexo-install/cmd_hexo.png" alt="Hexo-install"><br>　　查看是否安装成功<code>hexo -v</code><br><br> <img src="/2019/12/06/Hexo-install/cmd_hexo_v.png" alt="Hexo-install"><br>　　hexo初始化<code>hexo init</code>……这边是后面在windows装的，git还没下，所以会有这么一个错误<br><br> <img src="/2019/12/06/Hexo-install/cmd_Wrong_git.png" alt="Hexo-install"><br>　　在百度上下载<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a>就可以了，感觉速度有点慢，应该是需要翻墙吧……当然我用我们的校网等了一小段时间下好了，下面是安装界面<br><br> <img src="/2019/12/06/Hexo-install/git_install.png" alt="Hexo-install">　　<br>　　记得记一下安装路径……我安装后它没有给我配置系统路径，所以需要自己配一下。<br><br> <img src="/2019/12/06/Hexo-install/git_set_Patg.png" alt="Hexo-install">　　<br><br> <img src="/2019/12/06/Hexo-install/sys_path.png" alt="Hexo-install"><br>　　依旧的，需要查看一下是不是配置好了<br>　　<code>git --version</code><br><br> <img src="/2019/12/06/Hexo-install/git_comp.png" alt="Hexo-install"><br>　　配置好之后，从上面失败的地方开始。即使用hexo init继续初始化。<br><br> <img src="/2019/12/06/Hexo-install/hexo_comp.png" alt="Hexo-install"><br>　　然后输入<br>　　<code>hexo s</code><br><br> <img src="/2019/12/06/Hexo-install/hexo_test.png" alt="Hexo-install"><br>进行调试，打开浏览器输入<br>　　<code>localhost:4000</code><br>出现以下界面你说明安装成功<br><br> <img src="/2019/12/06/Hexo-install/hexo_s.png" alt="Hexo-install"><br>　　到了这一步说明你已经安装成功啦，你可以为自己新建一篇命名叫”Hexo_install”博文，命令如下<br>　　<code>hexo n Hexo_install</code><br>这篇文章会生成在你的文件下的source_posts\里，你可以对其进行编辑，注意这里使用的是markdown语言。<br><br> <img src="/2019/12/06/Hexo-install/first_text.png" alt="Hexo-install"><br>　　下一步是把你的博客建在github上面，首先先下载一个插件:<code>cnpm install --save hexo-deployer-git</code>,安装后的结果如图所示。<br><br> <img src="/2019/12/06/Hexo-install/hexo_deployer.png" alt="Hexo-install"><br>　　然后你要在github注册一个账号，申请一个仓库，获取到你的web URL。<br><br> <img src="/2019/12/06/Hexo-install/the_link.png" alt="Hexo-install"><br>　　进入blog文件夹，编辑<code>_config.yml</code>文件，找到deploy一栏，输入以下代码，记得repo一栏填写的是上面在github上获取的那一个序列。<br><br> <img src="/2019/12/06/Hexo-install/config.png" alt="Hexo-install"><br>　　输入完后，在blog目录下输入<code>hexo clean</code>,清除缓存后输入<code>hexo g -d</code>提交，这里会弹出一个窗口让你输入你的github账号和密码。<br><br> <img src="/2019/12/06/Hexo-install/login.png" alt="Hexo-install"><br>　　deploy之后，等待一段时间，输入自己的博客账号，像我的就是<code>账户名.github.io</code>,打开之后即可看自己的博客。</p>
 <h2 id="可能会遇到的问题（后面看看会不会更新–）"><a href="#可能会遇到的问题（后面看看会不会更新–）" class="headerlink" title="可能会遇到的问题（后面看看会不会更新–）"></a>可能会遇到的问题（后面看看会不会更新–）</h2><h3 id="怎么配置系统环境"><a href="#怎么配置系统环境" class="headerlink" title="怎么配置系统环境"></a>怎么配置系统环境</h3><h3 id="怎么样在github上创建仓库"><a href="#怎么样在github上创建仓库" class="headerlink" title="怎么样在github上创建仓库"></a>怎么样在github上创建仓库</h3><h3 id="markdown的一些语法"><a href="#markdown的一些语法" class="headerlink" title="markdown的一些语法"></a>markdown的一些语法</h3><p>　　未完待续……</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2019/12/06/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
 </search>
