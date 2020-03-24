@@ -90,9 +90,43 @@ Stochastic gradient descent随机梯度下降</code></pre><p>　　　1.随机�
     <title>套接字程序设计</title>
     <url>/2020/03/16/Socket-Programming/</url>
     <content><![CDATA[<p>套接字程序设计</p>
-<h2 id="什么是套接字"><a href="#什么是套接字" class="headerlink" title="什么是套接字"></a>什么是套接字</h2><p>　　　<img src="/2020/03/16/Socket-Programming/socket_P1.png" alt="pic"><br>　　　步骤：1.通过IP地址或者域名找到主机（如<a href="http://www.xxx.com-&gt;202.116.64.8）" target="_blank" rel="noopener">www.xxx.com-&gt;202.116.64.8）</a><br>　　　　　　2.通过端口号找到主机上的进程(UDP协议[不可靠]，TCP协议[面向连接、可靠])</p>
-<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p>　　　端口号由16bit组成<br>　　　其中包括</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id1[分类]--&gt;id2[知名端口号  0-1023]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id1--&gt;id3[注册端口号  1024-49151]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id1--&gt;id4[动态端口号  49125-65535]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---80-HTTP协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---21-ftp协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---23-telnet协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---25-SMTP协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id2---110-POP3协议</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id3---id6[公司业务]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id4---id5[临时连接]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id5---用户可以随意使用</span></pre></td></tr><tr><td class="code"><pre><span class="line">    id6---用户可以随意使用</span></pre></td></tr></table></figure>]]></content>
+<h2 id="什么是套接字"><a href="#什么是套接字" class="headerlink" title="什么是套接字"></a>什么是套接字</h2><p>　　　<img src="/2020/03/16/Socket-Programming/socket_P1.png" alt="pic"><br>　　　步骤：1.通过IP地址或者域名找到主机[如 <a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a> -&gt; 202.116.64.8]<br>　　　　　　2.通过端口号找到主机上的进程(UDP协议[不可靠]，TCP协议[面向连接、可靠])</p>
+<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p>　　　端口号由16bit组成</p>
+<a id="more"></a>
+<p>　　　其中包括</p>
+<pre class="mermaid">
+graph LR;
+    id1[分类]-->id2[知名端口号  0-1023]
+    id1-->id3[注册端口号  1024-49151]
+    id1-->id4[动态端口号  49125-65535]
+    id2---80-HTTP协议
+    id2---21-ftp协议
+    id2---23-telnet协议
+    id2---25-SMTP协议
+    id2---110-POP3协议
+    id3---id6[公司业务]
+    id4---id5[临时连接]
+    id5---用户可以随意使用
+    id6---用户可以随意使用</pre>
+
+<ol>
+<li><strong>我是一级序列</strong> </li>
+<li><strong>我是一级序列</strong> </li>
+<li><strong>我是一级序列</strong> <ol>
+<li><em>我是二级序列</em> </li>
+<li><em>我是二级序列</em> </li>
+<li><em>我是二级序列</em> </li>
+</ol>
+</li>
+<li><strong>我是一级序列</strong> </li>
+<li><strong>我是一级序列</strong> <ol>
+<li><em>我是二级序列</em> </li>
+<li><em>我是二级序列</em> </li>
+<li>还是二级序列，没有三级序列 </li>
+</ol>
+</li>
+</ol>
+]]></content>
       <tags>
         <tag>/ComputerNetwork</tag>
       </tags>
