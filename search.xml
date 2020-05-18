@@ -94,39 +94,7 @@ Stochastic gradient descent随机梯度下降</code></pre><p>　　　1.随机�
 <h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p>　　　端口号由16bit组成</p>
 <a id="more"></a>
 <p>　　　其中包括</p>
-<pre class="mermaid">
-graph LR;
-    id1[分类]-->id2[知名端口号  0-1023]
-    id1-->id3[注册端口号  1024-49151]
-    id1-->id4[动态端口号  49125-65535]
-    id2---80-HTTP协议
-    id2---21-ftp协议
-    id2---23-telnet协议
-    id2---25-SMTP协议
-    id2---110-POP3协议
-    id3---id6[公司业务]
-    id4---id5[临时连接]
-    id5---用户可以随意使用
-    id6---用户可以随意使用</pre>
-
-<ol>
-<li><strong>我是一级序列</strong> </li>
-<li><strong>我是一级序列</strong> </li>
-<li><strong>我是一级序列</strong> <ol>
-<li><em>我是二级序列</em> </li>
-<li><em>我是二级序列</em> </li>
-<li><em>我是二级序列</em> </li>
-</ol>
-</li>
-<li><strong>我是一级序列</strong> </li>
-<li><strong>我是一级序列</strong> <ol>
-<li><em>我是二级序列</em> </li>
-<li><em>我是二级序列</em> </li>
-<li>还是二级序列，没有三级序列 </li>
-</ol>
-</li>
-</ol>
-]]></content>
+<img src="/2020/03/16/Socket-Programming/socket_P2.png" class="[pic]">]]></content>
       <tags>
         <tag>/ComputerNetwork</tag>
       </tags>
